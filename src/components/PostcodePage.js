@@ -1,4 +1,8 @@
 import React from "react";
+import CrimeList from "./postcodeComponents/CrimeList";
+import Graph from "./postcodeComponents/graph";
+import Map from "./postcodeComponents/googleMap";
+
 
 
 class PostcodePage extends React.Component {
@@ -7,13 +11,13 @@ class PostcodePage extends React.Component {
       <div>
         <h1>POSTCODE</h1>
         <section className="GoogleMap">
-          <h3>Google Map</h3>
+          <h1>map Map MAP</h1>
         </section>
         <section className="CrimesList">
-          <h3>Crime List</h3>
+          <CrimeList/>
         </section>
         <section className="Crime Graph">
-          <h3>Crime Graph</h3>
+          <Graph/>
         </section>
       </div>
     ) 

@@ -34,13 +34,12 @@ class Homepage extends React.Component {
             onChange={this.handleFormChange}
           />
         </form>
-        {this.state.postcodeResults ? 
-        <PostcodePage /> 
-         : null }
-        
         <p className="App-intro">
           Enter your <strong>postcode</strong> to start
         </p>
+        {this.state.postcodeResults ? 
+        <PostcodePage /> 
+         : null }
       </div>
           
     );
