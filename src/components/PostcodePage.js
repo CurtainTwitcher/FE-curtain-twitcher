@@ -1,29 +1,23 @@
 import React from "react";
 import CrimeList from "./postcodeComponents/CrimeList";
 import Graph from "./postcodeComponents/graph";
-import Map from "./postcodeComponents/googleMap";
-
-
+import MyMapComponent from "./postcodeComponents/googleMap";
 
 class PostcodePage extends React.Component {
-  render () {
-    return(
+  render() {
+    return (
       <div>
         <h1>POSTCODE</h1>
-        <section className="GoogleMap">
-          <h1>map Map MAP</h1>
-        </section>
+        <MyMapComponent isMarkerShown />
         <section className="CrimesList">
-          <CrimeList/>
+          <CrimeList />
         </section>
         <section className="Crime Graph">
-          <Graph/>
+          <Graph />
         </section>
       </div>
-    ) 
-
+    );
   }
-
 }
 
 export default PostcodePage;

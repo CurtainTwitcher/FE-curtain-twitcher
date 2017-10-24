@@ -1,37 +1,66 @@
-// import React from 'react';
+import React from "react";
+import MdInfoOutline from "react-icons/lib/md/info-outline";
+import { compose, withProps, withStateHandlers } from "recompose";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  InfoWindow,
+  Marker
+} from "react-google-maps";
+import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
 
-// export class Container extends React.Component {
-//   render() {
-//       const style = {
-//       width: '100vw',
-//       height: '100vh'
-//     }
-//     return (
-//       <div style={style}>
-//         <Map google={this.props.google}
-//           />
-//       </div>
-//     )
-//   }
-// }
-// export class Map extends React.Component {
-//   componentDidUpdate(prevProps, prevState) {
-//     if (prevProps.google !== this.props.google) {
-//       this.loadMap();
-//     }
-//   }
+const MyMapComponent = compose(
+  withStateHandlers(
+    () => ({
+      isOpen: false
+    }),
+    {
+      onToggleOpen: ({ isOpen }) => () => ({
+        isOpen: !isOpen
+      })
+    }
+  ),
+  withProps({
+    googleMapURL:
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px`, width: `40%` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props => (
+  <GoogleMap
+    defaultZoom={9}
+    defaultCenter={{ lat: 53.4807593, lng: -2.2426305000000184 }}
+  >
+    <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
+      {/* MAP on each marker to generate a few */}
+      <Marker
+        position={{ lat: 53.4807593, lng: -2.2126309000000194 }}
+        onClick={props.onToggleOpen}
+      >
+        {props.isOpen && (
+          <InfoWindow onCloseClick={props.onToggleOpen}>
+            <div>
+              <MdInfoOutline /> Hello
+            </div>
+          </InfoWindow>
+        )}
+      </Marker>
+      {/* <Marker
+        key={1}
+        position={{ lat: 53.4807593, lng: -2.2426301000000184 }}
+        onClick={props.onToggleOpen}
+      />
+      <Marker
+        key={1}
+        position={{ lat: 53.4007593, lng: -2.2926305000000184 }}
+        onClick={props.onToggleOpen}
+      /> */}
+    </MarkerClusterer>
+  </GoogleMap>
+));
 
-//   loadMap() {
-//     // ...
-//   }
-
-//   render() {
-//     <div ref='map'>
-//     Loading map...
-//   </div>
-//   }
-// }
-
-// export default GoogleApiComponent({
-//   apiKey: AIzaSyDqak-rLtLCUdDlCYkKCOT6o495LBrDuJ4
-// })(Container)
+export default MyMapComponent;
