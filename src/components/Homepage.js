@@ -1,5 +1,7 @@
 import React from "react";
 
+import MyMapComponent from "./googleMap";
+
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +37,8 @@ class Homepage extends React.Component {
         <p className="App-intro">
           Enter your <strong>postcode</strong> to start
         </p>
+
+        <MyMapComponent isMarkerShown />
       </div>
     );
   }
