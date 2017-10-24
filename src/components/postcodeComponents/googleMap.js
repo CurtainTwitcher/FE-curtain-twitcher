@@ -30,10 +30,15 @@ const MyMapComponent = compose(
   }),
   withScriptjs,
   withGoogleMap
-)(props => (
+)(props => {
+  console.log(props.latitude)
+  console.log(props.longitude)
+  return (
+  <div>
   <GoogleMap
     defaultZoom={9}
-    defaultCenter={{ lat: 53.4807593, lng: -2.2126309000000194 }}
+    defaultCenter={{ lat: +props.latitude, lng: +props.longitude }} 
+    center={{ lat: +props.latitude, lng: +props.longitude }} 
   >
     <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
       {/* MAP on each marker to generate a few */}
@@ -61,6 +66,8 @@ const MyMapComponent = compose(
       /> */}
     </MarkerClusterer>
   </GoogleMap>
-));
+  </div>
+  )}
+);
 
 export default MyMapComponent;

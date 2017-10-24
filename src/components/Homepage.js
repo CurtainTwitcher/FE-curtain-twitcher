@@ -8,7 +8,8 @@ class Homepage extends React.Component {
     this.state = {
       postcode: "",
       postcodeResults: false,
-      postcodeData: {}
+      longitude: -2.2126309000000194,
+      latitude: 53.4807593
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -33,9 +34,9 @@ class Homepage extends React.Component {
   fetchPostcodes(postcode) {
     axios.get(`https://api.postcodes.io/postcodes/${postcode}`)
       .then(response => {
-        console.log(response.data.result)
         this.setState({
-          postcodeData: response.data.result
+          longitude: response.data.result.longitude,
+          latitude: response.data.result.latitude
         })
       })
       .catch(err => {
@@ -70,7 +71,7 @@ class Homepage extends React.Component {
         </p>
 
         {this.state.postcodeResults ? <PostcodePage fetchPostcodes={this.fetchPostcodes} postcode={this.state.postcode} 
-        longitude={this.state.postcodeData.longitude} latitude={this.state.postcodeData.latitude}/> : null}
+        longitude={this.state.longitude} latitude={this.state.latitude}/> : null}
       </div>
     );
   }
