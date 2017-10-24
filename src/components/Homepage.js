@@ -1,4 +1,5 @@
 import React from "react";
+import PostcodePage from "./PostcodePage";
 
 import MyMapComponent from "./googleMap";
 
@@ -6,7 +7,8 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      postcode: ""
+      postcode: "",
+      postcodeResults: false
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -19,26 +21,24 @@ class Homepage extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    this.setState = {
-      postcode: ""
-    };
+    this.setState({
+      postcode: "",
+      postcodeResults: true
+    });
   }
 
   render() {
     return (
       <div>
-        <form>
-          <input
-            type="text"
-            onChange={this.handleFormChange}
-            onSubmit={this.handleFormSubmit}
-          />
+        <form onSubmit={this.handleFormSubmit}>
+          <input type="text" onChange={this.handleFormChange} />
         </form>
         <p className="App-intro">
           Enter your <strong>postcode</strong> to start
         </p>
 
         <MyMapComponent isMarkerShown />
+        {this.state.postcodeResults ? <PostcodePage /> : null}
       </div>
     );
   }
