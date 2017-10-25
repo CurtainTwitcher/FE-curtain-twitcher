@@ -9,6 +9,7 @@ import {
   Marker
 } from "react-google-maps";
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
+import dummy from "./graphDataDummy";
 
 const MyMapComponent = compose(
   withStateHandlers(
@@ -36,11 +37,27 @@ const MyMapComponent = compose(
       <GoogleMap
         defaultZoom={9}
         defaultCenter={{ lat: +props.latitude, lng: +props.longitude }}
-        center={{ lat: +props.latitude, lng: +props.longitude }}
+        //center={{ lat: +props.latitude, lng: +props.longitude }}
       >
         <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
           {/* MAP on each marker to generate a few */}
-          <Marker
+          {dummy.map(crime => {
+          return(
+      <Marker
+      position={{ lat: crime.location.coordinates[1], lng: crime.location.coordinates[0]}}
+      onClick={props.onToggleOpen}
+    >
+       {props.isOpen && (
+        <InfoWindow onCloseClick={props.onToggleOpen}>
+          <div>
+            <MdInfoOutline /> Hello
+          </div>
+        </InfoWindow>
+      )}
+    </Marker>
+          )
+          })}
+          {/* <Marker
             position={{ lat: +props.latitude, lng: +props.longitude }}
             onClick={props.onToggleOpen}
           >
@@ -51,7 +68,7 @@ const MyMapComponent = compose(
                 </div>
               </InfoWindow>
             )}
-          </Marker>
+          </Marker> */}
           {/* <Marker
         key={1}
         position={{ lat: 53.4807593, lng: -2.2426301000000184 }}
