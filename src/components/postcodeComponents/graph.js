@@ -1,41 +1,46 @@
 import React from "react";
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 
-class Graph extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      chartData: props.chartData
-    };
-  }
+import crimes from "../helpers/chartDataCreator";
 
-  static defaultProps = {
-    displayTitle: true,
-    displayLegend: true,
-    legendPosition: "right",
-    location: "City"
-  };
+const data = {
+  labels: Object.keys(crimes),
+  datasets: [
+    {
+      data: Object.values(crimes),
+      backgroundColor: [
+        "#FF6384",
+        "#36A2EB",
+        "#FFCE56",
+        "#ff704d",
+        "#4d94ff",
+        "#ffb84d",
+        "#80bfff",
+        "#ff4d4d",
+        "#ffff4d",
+        "#4dd2ff",
+        "#4d4dff"
+      ],
+      hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+    }
+  ]
+};
 
-  render() {
-    return (
-      <div>
-        <Pie
-          data={this.state.chartData}
-          options={{
-            title: {
-              display: this.props.displayTitle,
-              text: "Largest Cities In " + this.props.location,
-              fontSize: 25
-            },
-            legend: {
-              display: this.props.displayLegend,
-              position: this.props.legendPosition
-            }
-          }}
-        />
-      </div>
-    );
-  }
-}
+const Graph = props => {
+  return (
+    <div
+      style={{
+        boxSizing: `border-box`,
+        width: `45%`,
+        height: `45%`,
+        marginTop: `27px`,
+        padding: `0 12px`,
+        outline: `none`
+      }}
+    >
+      <Doughnut data={data} />
+    </div>
+  );
+};
 
 export default Graph;

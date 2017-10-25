@@ -31,30 +31,28 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
-  console.log(props.latitude)
-  console.log(props.longitude)
   return (
-  <div>
-  <GoogleMap
-    defaultZoom={9}
-    defaultCenter={{ lat: +props.latitude, lng: +props.longitude }} 
-    center={{ lat: +props.latitude, lng: +props.longitude }} 
-  >
-    <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
-      {/* MAP on each marker to generate a few */}
-      <Marker
-        position={{ lat: +props.latitude, lng: +props.longitude }}
-        onClick={props.onToggleOpen}
+    <div className="box">
+      <GoogleMap
+        defaultZoom={9}
+        defaultCenter={{ lat: +props.latitude, lng: +props.longitude }}
+        center={{ lat: +props.latitude, lng: +props.longitude }}
       >
-        {props.isOpen && (
-          <InfoWindow onCloseClick={props.onToggleOpen}>
-            <div>
-              <MdInfoOutline /> Hello
-            </div>
-          </InfoWindow>
-        )}
-      </Marker>
-      {/* <Marker
+        <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
+          {/* MAP on each marker to generate a few */}
+          <Marker
+            position={{ lat: +props.latitude, lng: +props.longitude }}
+            onClick={props.onToggleOpen}
+          >
+            {props.isOpen && (
+              <InfoWindow onCloseClick={props.onToggleOpen}>
+                <div>
+                  <MdInfoOutline /> Hello
+                </div>
+              </InfoWindow>
+            )}
+          </Marker>
+          {/* <Marker
         key={1}
         position={{ lat: 53.4807593, lng: -2.2426301000000184 }}
         onClick={props.onToggleOpen}
@@ -64,10 +62,10 @@ const MyMapComponent = compose(
         position={{ lat: 53.4007593, lng: -2.2926305000000184 }}
         onClick={props.onToggleOpen}
       /> */}
-    </MarkerClusterer>
-  </GoogleMap>
-  </div>
-  )}
-);
+        </MarkerClusterer>
+      </GoogleMap>
+    </div>
+  );
+});
 
 export default MyMapComponent;
