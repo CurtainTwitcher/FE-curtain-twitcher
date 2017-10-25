@@ -1,15 +1,19 @@
 import React from "react";
 import PostcodePage from "./PostcodePage";
+import axios from 'axios';
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       postcode: "",
-      postcodeResults: false
+      postcodeResults: false,
+      longitude: -2.2126309000000194,
+      latitude: 53.4807593
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.fetchPostcodes = this.fetchPostcodes.bind(this)
   }
 
   handleFormChange(event) {
@@ -20,9 +24,24 @@ class Homepage extends React.Component {
   handleFormSubmit(event) {
     event.preventDefault();
     this.setState({
-      postcode: "",
+      //postcode: "",
       postcodeResults: true
     });
+  }
+
+
+  
+  fetchPostcodes(postcode) {
+    axios.get(`https://api.postcodes.io/postcodes/${postcode}`)
+      .then(response => {
+        this.setState({
+          longitude: response.data.result.longitude,
+          latitude: response.data.result.latitude
+        })
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 
   render() {
@@ -51,7 +70,8 @@ class Homepage extends React.Component {
           Enter your <strong>postcode</strong> to start
         </p>
 
-        {this.state.postcodeResults ? <PostcodePage /> : null}
+        {this.state.postcodeResults ? <PostcodePage fetchPostcodes={this.fetchPostcodes} postcode={this.state.postcode} 
+        longitude={this.state.longitude} latitude={this.state.latitude}/> : null}
       </div>
     );
   }
