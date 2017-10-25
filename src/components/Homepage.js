@@ -20,13 +20,13 @@ class Homepage extends React.Component {
 
   handleFormChange(event) {
     let postcode = event.target.value;
-    this.setState({ postcode });
+    this.setState({ postcode: postcode.toUpperCase() });
   }
 
   handleFormSubmit(event) {
     event.preventDefault();
     this.setState({
-      //postcode: "",
+      // postcode: "",
       postcodeResults: true
     });
   }
@@ -70,6 +70,7 @@ class Homepage extends React.Component {
               outline: `none`,
               textOverflow: `ellipses`
             }}
+            value={this.state.postcode}
           />
         </form>
         <p>

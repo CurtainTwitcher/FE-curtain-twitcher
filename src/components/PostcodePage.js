@@ -12,7 +12,6 @@ class PostcodePage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("hi");
     if (this.props.postcode !== nextProps.postcode) {
       this.props.fetchPostcodes(this.props.postcode);
     }
