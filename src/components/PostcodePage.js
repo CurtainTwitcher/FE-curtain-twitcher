@@ -11,6 +11,13 @@ class PostcodePage extends React.Component {
     this.props.fetchPostcodes(this.props.postcode);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log("hi");
+    if (this.props.postcode !== nextProps.postcode) {
+      this.props.fetchPostcodes(this.props.postcode);
+    }
+  }
+
   render() {
     return (
       <div className="container-fluid">

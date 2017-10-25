@@ -36,6 +36,7 @@ class Homepage extends React.Component {
       .get(`https://api.postcodes.io/postcodes/${postcode}`)
       .then(response => {
         this.setState({
+          badRequest: false,
           longitude: response.data.result.longitude,
           latitude: response.data.result.latitude
         });
