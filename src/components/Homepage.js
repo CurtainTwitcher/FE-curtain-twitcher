@@ -1,6 +1,7 @@
 import React from "react";
 import PostcodePage from "./PostcodePage";
-import axios from 'axios';
+import InvalidPostcode from "./InvalidPostcode";
+import axios from "axios";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -8,12 +9,13 @@ class Homepage extends React.Component {
     this.state = {
       postcode: "",
       postcodeResults: false,
+      badRequest: false,
       longitude: -2.2126309000000194,
       latitude: 53.4807593
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
-    this.fetchPostcodes = this.fetchPostcodes.bind(this)
+    this.fetchPostcodes = this.fetchPostcodes.bind(this);
   }
 
   handleFormChange(event) {
@@ -29,19 +31,22 @@ class Homepage extends React.Component {
     });
   }
 
-
-  
   fetchPostcodes(postcode) {
-    axios.get(`https://api.postcodes.io/postcodes/${postcode}`)
+    axios
+      .get(`https://api.postcodes.io/postcodes/${postcode}`)
       .then(response => {
         this.setState({
           longitude: response.data.result.longitude,
           latitude: response.data.result.latitude
-        })
+        });
       })
       .catch(err => {
-        console.error(err)
-      })
+        this.setState({
+          badRequest: true,
+          postcodeResults: false
+        });
+        console.error(err);
+      });
   }
 
   render() {
@@ -69,9 +74,15 @@ class Homepage extends React.Component {
         <p>
           Enter your <strong>postcode</strong> to start
         </p>
-
-        {this.state.postcodeResults ? <PostcodePage fetchPostcodes={this.fetchPostcodes} postcode={this.state.postcode} 
-        longitude={this.state.longitude} latitude={this.state.latitude}/> : null}
+        {this.state.badRequest ? <InvalidPostcode /> : null}
+        {this.state.postcodeResults ? (
+          <PostcodePage
+            fetchPostcodes={this.fetchPostcodes}
+            postcode={this.state.postcode}
+            longitude={this.state.longitude}
+            latitude={this.state.latitude}
+          />
+        ) : null}
       </div>
     );
   }
