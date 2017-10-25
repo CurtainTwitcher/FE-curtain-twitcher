@@ -5,17 +5,21 @@ import MyMapComponent from "./postcodeComponents/googleMap";
 
 class PostcodePage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
-  componentDidMount(){
-    this.props.fetchPostcodes(this.props.postcode)
+  componentDidMount() {
+    this.props.fetchPostcodes(this.props.postcode);
   }
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <h1>POSTCODE</h1>
-        <MyMapComponent isMarkerShown longitude={this.props.longitude} latitude={this.props.latitude}/>
+        <MyMapComponent
+          isMarkerShown
+          longitude={this.props.longitude}
+          latitude={this.props.latitude}
+        />
         <section className="CrimesList">
           <CrimeList />
         </section>
