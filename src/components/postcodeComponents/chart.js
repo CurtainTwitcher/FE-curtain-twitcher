@@ -26,7 +26,7 @@ const data = {
   ]
 };
 
-const Graph = props => {
+const Chart = props => {
   return (
     <div
       style={{
@@ -43,4 +43,4 @@ const Graph = props => {
   );
 };
 
-export default Graph;
+export default Chart;

@@ -1,13 +1,20 @@
 import React from 'react';
-
+import crimes from "../helpers/chartDataCreator";
+const crimesType = Object.keys(crimes)
 const CrimeList = () => {
+  console.log(crimes, 'hello')
   return(
     <div>
       <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+      {crimesType.map(crime => {
+        return(
+
+          <li>{crime}</li>
+          
+        )
+      })} 
       </ul>
+      
     </div>
   )
 }
