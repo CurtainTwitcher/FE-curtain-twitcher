@@ -57,7 +57,7 @@ const MyMapComponent = compose(
     </Marker>
           )
           })}
-          {/* <Marker
+          <Marker
             position={{ lat: +props.latitude, lng: +props.longitude }}
             onClick={props.onToggleOpen}
           >
@@ -68,7 +68,7 @@ const MyMapComponent = compose(
                 </div>
               </InfoWindow>
             )}
-          </Marker> */}
+          </Marker>
           {/* <Marker
         key={1}
         position={{ lat: 53.4807593, lng: -2.2426301000000184 }}
