@@ -55,41 +55,47 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Navbar />
-        <br />
-        <form onSubmit={this.handleFormSubmit}>
-          <input
-            type="text"
-            onChange={this.handleFormChange}
-            style={{
-              boxSizing: `border-box`,
-              border: `1px solid transparent`,
-              width: `240px`,
-              height: `32px`,
-              marginTop: `27px`,
-              padding: `0 12px`,
-              borderRadius: `3px`,
-              boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-              fontSize: `14px`,
-              outline: `none`,
-              textOverflow: `ellipses`
-            }}
-            value={this.state.postcode}
-          />
-        </form>
-        <p>
-          Enter your <strong>postcode</strong> to start
-        </p>
-        {this.state.badRequest ? <InvalidPostcode /> : null}
-        {this.state.postcodeResults ? (
-          <PostcodePage
-            fetchPostcodes={this.fetchPostcodes}
-            postcode={this.state.postcode}
-            longitude={this.state.longitude}
-            latitude={this.state.latitude}
-          />
-        ) : null}
+      <div>
+        <Navbar
+          onSubmit={this.handleFormSubmit}
+          onChange={this.handleFormChange}
+          postcode={this.state.postcode}
+        />
+        <div className="App">
+          <br />
+          <form onSubmit={this.handleFormSubmit}>
+            <input
+              type="text"
+              onChange={this.handleFormChange}
+              style={{
+                boxSizing: `border-box`,
+                border: `1px solid transparent`,
+                width: `240px`,
+                height: `32px`,
+                marginTop: `27px`,
+                padding: `0 12px`,
+                borderRadius: `3px`,
+                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                fontSize: `14px`,
+                outline: `none`,
+                textOverflow: `ellipses`
+              }}
+              value={this.state.postcode}
+            />
+          </form>
+          <p>
+            Enter your <strong>postcode</strong> to start
+          </p>
+          {this.state.badRequest ? <InvalidPostcode /> : null}
+          {this.state.postcodeResults ? (
+            <PostcodePage
+              fetchPostcodes={this.fetchPostcodes}
+              postcode={this.state.postcode}
+              longitude={this.state.longitude}
+              latitude={this.state.latitude}
+            />
+          ) : null}
+        </div>
         <Footer />
       </div>
     );

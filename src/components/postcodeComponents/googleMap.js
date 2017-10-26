@@ -1,6 +1,7 @@
 import React from "react";
 import MdInfoOutline from "react-icons/lib/md/info-outline";
 import { compose, withProps, withStateHandlers } from "recompose";
+import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
 import {
   withScriptjs,
   withGoogleMap,
@@ -8,7 +9,7 @@ import {
   InfoWindow,
   Marker
 } from "react-google-maps";
-import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
+
 import dummy from "./graphDataDummy";
 
 const MyMapComponent = compose(
@@ -35,27 +36,22 @@ const MyMapComponent = compose(
   return (
     <div className="box">
       <GoogleMap
-        defaultZoom={9}
+        defaultZoom={10}
         defaultCenter={{ lat: +props.latitude, lng: +props.longitude }}
-        //center={{ lat: +props.latitude, lng: +props.longitude }}
+        center={{ lat: +props.latitude, lng: +props.longitude }}
       >
         <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
           {/* MAP on each marker to generate a few */}
-          {dummy.map(crime => {
-          return(
-      <Marker
-      position={{ lat: crime.location.coordinates[1], lng: crime.location.coordinates[0]}}
-      onClick={props.onToggleOpen}
-    >
-       {props.isOpen && (
-        <InfoWindow onCloseClick={props.onToggleOpen}>
-          <div>
-            <MdInfoOutline /> Hello
-          </div>
-        </InfoWindow>
-      )}
-    </Marker>
-          )
+          {dummy.map((crime, i) => {
+            return (
+              <Marker
+                key={i}
+                position={{
+                  lat: crime.location.coordinates[1],
+                  lng: crime.location.coordinates[0]
+                }}
+              />
+            );
           })}
           <Marker
             position={{ lat: +props.latitude, lng: +props.longitude }}
@@ -64,21 +60,11 @@ const MyMapComponent = compose(
             {props.isOpen && (
               <InfoWindow onCloseClick={props.onToggleOpen}>
                 <div>
-                  <MdInfoOutline /> Hello
+                  <MdInfoOutline /> Your Postcode
                 </div>
               </InfoWindow>
             )}
           </Marker>
-          {/* <Marker
-        key={1}
-        position={{ lat: 53.4807593, lng: -2.2426301000000184 }}
-        onClick={props.onToggleOpen}
-      />
-      <Marker
-        key={1}
-        position={{ lat: 53.4007593, lng: -2.2926305000000184 }}
-        onClick={props.onToggleOpen}
-      /> */}
         </MarkerClusterer>
       </GoogleMap>
     </div>

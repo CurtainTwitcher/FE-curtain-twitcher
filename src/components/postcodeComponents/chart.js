@@ -1,6 +1,6 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
-
+import "./Graph.css";
 import crimes from "../helpers/chartDataCreator";
 
 const data = {
@@ -28,17 +28,19 @@ const data = {
 
 const Chart = props => {
   return (
-    <div
-      style={{
-        boxSizing: `border-box`,
-        width: `45%`,
-        height: `45%`,
-        marginTop: `27px`,
-        padding: `0 12px`,
-        outline: `none`
-      }}
-    >
-      <Doughnut data={data} />
+    <div className="chart">
+      <div
+        style={{
+          boxSizing: `border-box`,
+          width: `45%`,
+          height: `45%`,
+          marginTop: `27px`,
+          padding: `0 12px`,
+          outline: `none`
+        }}
+      >
+        <Doughnut data={data} />
+      </div>
     </div>
   );
 };
