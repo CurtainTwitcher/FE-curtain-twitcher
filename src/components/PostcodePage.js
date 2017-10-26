@@ -1,6 +1,7 @@
 import React from "react";
 import CrimeList from "./postcodeComponents/CrimeList";
 import Chart from "./postcodeComponents/chart";
+import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
 
 class PostcodePage extends React.Component {
@@ -31,6 +32,9 @@ class PostcodePage extends React.Component {
         </section>
         <section className="Crime Graph">
           <Chart />
+        </section>
+        <section className="Crime Graph">
+          <TrendGraph />
         </section>
       </div>
     );
