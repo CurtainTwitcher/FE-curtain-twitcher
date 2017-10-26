@@ -1,6 +1,9 @@
 import React from "react";
 import PostcodePage from "./PostcodePage";
 import InvalidPostcode from "./InvalidPostcode";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
 import axios from "axios";
 
 class Homepage extends React.Component {
@@ -52,7 +55,9 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
+        <Navbar />
+        <br />
         <form onSubmit={this.handleFormSubmit}>
           <input
             type="text"
@@ -85,6 +90,7 @@ class Homepage extends React.Component {
             latitude={this.state.latitude}
           />
         ) : null}
+        <Footer />
       </div>
     );
   }
