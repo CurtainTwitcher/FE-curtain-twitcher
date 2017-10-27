@@ -34,23 +34,25 @@ const Navbar = props => {
               alt=""
             />
           </a>
+          {props.postcodeResults ? (
+            <form className="form-inline" onSubmit={props.onSubmit}>
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                placeholder="Postcode"
+                aria-label="Search"
+                onChange={props.onChange}
+                value={props.postcode}
+              />
+              <button
+                className="btn btn-outline-success my-2 my-sm-0"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+          ) : null}
 
-          <form className="form-inline" onSubmit={props.onSubmit}>
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Postcode"
-              aria-label="Search"
-              onChange={props.onChange}
-              value={props.postcode}
-            />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
           <button
             className="navbar-toggler"
             type="button"
