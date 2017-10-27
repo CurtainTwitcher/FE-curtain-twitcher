@@ -3,6 +3,7 @@ import React from 'react';
 
 const SearchBar=(props) => {
   return (
+    <div>
 <form onSubmit={props.handleFormSubmit}>
             <input
               type="text"
@@ -23,6 +24,11 @@ const SearchBar=(props) => {
               value={props.postcode}
             />
           </form>
+
+<p>
+Enter your <strong>postcode</strong> to start
+</p>
+</div>
   )
 }
 
