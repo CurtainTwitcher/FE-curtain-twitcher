@@ -24,7 +24,6 @@ class PostcodePage extends React.Component {
         <h3>
           Showing results for: <strong>{this.props.postcode}</strong>
         </h3>
-        {/* <div className="row"> */}
         <div className="container">
           <MyMapComponent
             isMarkerShown
@@ -32,11 +31,15 @@ class PostcodePage extends React.Component {
             latitude={this.props.latitude}
           />
         </div>
-        {/* </div> */}
+        <br />
         <div className="container">
           <CrimeList />
         </div>
-        <Chart />
+        <div className="box" style={{ marginLeft: "20%" }}>
+          <Chart />
+        </div>
+        <br />
+        <br />
         <div className="container" style={{ marginBottom: `200px` }}>
           <TrendGraph />
         </div>
