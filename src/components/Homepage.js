@@ -3,7 +3,7 @@ import PostcodePage from "./PostcodePage";
 import InvalidPostcode from "./InvalidPostcode";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+import SearchBar from "./homepageComponents/Searchbar";
 import axios from "axios";
 
 class Homepage extends React.Component {
@@ -63,26 +63,7 @@ class Homepage extends React.Component {
         />
         <div className="App">
           <br />
-          <form onSubmit={this.handleFormSubmit}>
-            <input
-              type="text"
-              onChange={this.handleFormChange}
-              style={{
-                boxSizing: `border-box`,
-                border: `1px solid transparent`,
-                width: `240px`,
-                height: `32px`,
-                marginTop: `27px`,
-                padding: `0 12px`,
-                borderRadius: `3px`,
-                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                fontSize: `14px`,
-                outline: `none`,
-                textOverflow: `ellipses`
-              }}
-              value={this.state.postcode}
-            />
-          </form>
+          <SearchBar handleFormSubmit={this.handleFormSubmit} handleFormChange={this.handleFormChange} postcode={this.state.postcode}> </SearchBar>
           <p>
             Enter your <strong>postcode</strong> to start
           </p>

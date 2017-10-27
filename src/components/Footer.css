@@ -1,7 +1,6 @@
 .footer {
-position: fixed;
-bottom: 0;
-width: 100%
+position: absolute;
+width: 100%;
 }
 
 html, body {

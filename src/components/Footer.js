@@ -3,7 +3,6 @@ import "./Footer.css";
 
 const Footer = props => {
   return (
-    <div className="footer"> 
     <footer className="footer-distributed">
       <div className="footer-right">
         <a href="#">
@@ -34,7 +33,6 @@ const Footer = props => {
         <p>NorthCoders &copy; 2017</p>
       </div>
     </footer>
-    </div>
   );
 };
 
