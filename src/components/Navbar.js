@@ -35,12 +35,14 @@ const Navbar = props => {
             />
           </a>
 
-          <form className="form-inline">
+          <form className="form-inline" onSubmit={props.onSubmit}>
             <input
               className="form-control mr-sm-2"
               type="search"
-              placeholder="Search"
+              placeholder="Postcode"
               aria-label="Search"
+              onChange={props.onChange}
+              value={props.postcode}
             />
             <button
               className="btn btn-outline-success my-2 my-sm-0"
