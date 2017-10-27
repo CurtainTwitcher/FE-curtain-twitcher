@@ -1,41 +1,49 @@
 import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from "recharts";
+import {Line} from 'react-chartjs-2';
+import TrendsDummy from './graphTrendsDummy';
 
-const data = [
-  { name: "Burglary", Q2: 4000, Q1: 2400, amt: 2400 },
-  { name: "Bike Theft", Q2: 3000, Q1: 1398, amt: 2210 },
-  { name: "Page C", Q2: 2000, Q1: 9800, amt: 2290 },
-  { name: "Page D", Q2: 2780, Q1: 3908, amt: 2000 },
-  { name: "Page E", Q2: 1890, Q1: 4800, amt: 2181 },
-  { name: "Page F", Q2: 2390, Q1: 3800, amt: 2500 },
-  { name: "Other Crimes", Q2: 3490, Q1: 4300, amt: 2100 }
-];
+let dataTrend;
+let name;
+const trends = TrendsDummy.map(crime => {
+  name = crime.name;
+  dataTrend = Object.values(crime).slice(1)
+});
+console.log(trends)
 
-const TrendGraph = () => {
-  return (
-    <LineChart width={600} height={300} data={data}>
-      <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
-      <YAxis />
-      <CartesianGrid strokeDasharray="3 3" />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="Q1"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
-      />
-      <Line type="monotone" dataKey="Q2" stroke="#82ca9d" />
-    </LineChart>
-  );
+const data = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  datasets: [
+    {
+      label: name,
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: dataTrend
+    }
+  ]
 };
+const TrendGraph=(props) => {
+  return (
+    <div>
+      <h2>Crime Trends in your area
+      </h2>
+      <Line data={data} />
+    </div>
+  );
+}
 
 export default TrendGraph;
