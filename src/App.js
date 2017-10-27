@@ -14,9 +14,7 @@ class App extends Component {
             <Route exact path="/" component={Homepage} />
             <Route exact path="/:postcode" component={PostcodePage} />
           </Switch>
-          <div className="footer">
           <Footer />
-        </div>
         </div>
       </BrowserRouter>
 
