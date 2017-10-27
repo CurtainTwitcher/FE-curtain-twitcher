@@ -20,7 +20,6 @@ class Homepage extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.fetchPostcodes = this.fetchPostcodes.bind(this);
-
   }
 
   handleFormChange(event) {
@@ -32,8 +31,7 @@ class Homepage extends React.Component {
     event.preventDefault();
     this.setState({
       postcodeResults: true,
-      searchbarHome: false,
-
+      searchbarHome: false
     });
   }
 
@@ -50,6 +48,7 @@ class Homepage extends React.Component {
       .catch(err => {
         this.setState({
           badRequest: true,
+          searchbarHome: true,
           postcodeResults: false
         });
         console.error(err);
@@ -63,13 +62,17 @@ class Homepage extends React.Component {
           onSubmit={this.handleFormSubmit}
           onChange={this.handleFormChange}
           postcode={this.state.postcode}
+          postcodeResults={this.state.postcodeResults}
         />
         <div className="App">
           <br />
-          {this.state.searchbarHome ?
-            <SearchBar handleFormSubmit={this.handleFormSubmit} handleFormChange={this.handleFormChange} postcode={this.state.postcode} />
-           
-           : null}
+          {this.state.searchbarHome ? (
+            <SearchBar
+              handleFormSubmit={this.handleFormSubmit}
+              handleFormChange={this.handleFormChange}
+              postcode={this.state.postcode}
+            />
+          ) : null}
           {this.state.badRequest ? <InvalidPostcode /> : null}
           {this.state.postcodeResults ? (
             <PostcodePage
@@ -80,7 +83,6 @@ class Homepage extends React.Component {
             />
           ) : null}
         </div>
-
       </div>
     );
   }
