@@ -3,7 +3,7 @@ import PostcodePage from "./PostcodePage";
 import InvalidPostcode from "./InvalidPostcode";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+import SearchBar from "./homepageComponents/Searchbar";
 import axios from "axios";
 
 class Homepage extends React.Component {
@@ -12,6 +12,7 @@ class Homepage extends React.Component {
     this.state = {
       postcode: "",
       postcodeResults: false,
+      searchbarHome: true,
       badRequest: false,
       longitude: -2.2126309000000194,
       latitude: 53.4807593
@@ -19,6 +20,7 @@ class Homepage extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.fetchPostcodes = this.fetchPostcodes.bind(this);
+
   }
 
   handleFormChange(event) {
@@ -29,8 +31,9 @@ class Homepage extends React.Component {
   handleFormSubmit(event) {
     event.preventDefault();
     this.setState({
-      // postcode: "",
-      postcodeResults: true
+      postcodeResults: true,
+      searchbarHome: false,
+
     });
   }
 
@@ -63,29 +66,10 @@ class Homepage extends React.Component {
         />
         <div className="App">
           <br />
-          <form onSubmit={this.handleFormSubmit}>
-            <input
-              type="text"
-              onChange={this.handleFormChange}
-              style={{
-                boxSizing: `border-box`,
-                border: `1px solid transparent`,
-                width: `240px`,
-                height: `32px`,
-                marginTop: `27px`,
-                padding: `0 12px`,
-                borderRadius: `3px`,
-                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                fontSize: `14px`,
-                outline: `none`,
-                textOverflow: `ellipses`
-              }}
-              value={this.state.postcode}
-            />
-          </form>
-          <p>
-            Enter your <strong>postcode</strong> to start
-          </p>
+          {this.state.searchbarHome ?
+            <SearchBar handleFormSubmit={this.handleFormSubmit} handleFormChange={this.handleFormChange} postcode={this.state.postcode} />
+           
+           : null}
           {this.state.badRequest ? <InvalidPostcode /> : null}
           {this.state.postcodeResults ? (
             <PostcodePage
@@ -96,7 +80,7 @@ class Homepage extends React.Component {
             />
           ) : null}
         </div>
-        <Footer />
+
       </div>
     );
   }
