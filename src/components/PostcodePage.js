@@ -24,22 +24,20 @@ class PostcodePage extends React.Component {
         <h3>
           Showing results for: <strong>{this.props.postcode}</strong>
         </h3>
-        <div className="row">
-          <div className="container">
-            <MyMapComponent
-              isMarkerShown
-              longitude={this.props.longitude}
-              latitude={this.props.latitude}
-            />
-          </div>
+        {/* <div className="row"> */}
+        <div className="container">
+          <MyMapComponent
+            isMarkerShown
+            longitude={this.props.longitude}
+            latitude={this.props.latitude}
+          />
         </div>
+        {/* </div> */}
         <div className="container">
           <CrimeList />
         </div>
-
         <Chart />
-
-        <div className="container">
+        <div className="container" style={{ marginBottom: `200px` }}>
           <TrendGraph />
         </div>
       </div>
