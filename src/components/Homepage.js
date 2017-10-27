@@ -96,7 +96,7 @@ class Homepage extends React.Component {
             />
           ) : null}
         </div>
-        <Footer />
+        
       </div>
     );
   }

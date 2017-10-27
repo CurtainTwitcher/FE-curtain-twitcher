@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Homepage from "./components/Homepage";
 import PostcodePage from "./components/PostcodePage";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -13,6 +14,9 @@ class App extends Component {
             <Route exact path="/" component={Homepage} />
             <Route exact path="/:postcode" component={PostcodePage} />
           </Switch>
+          <div>
+          <Footer className="footer"/>
+          </div>
         </div>
       </BrowserRouter>
     );
