@@ -33,9 +33,9 @@ class PostcodePage extends React.Component {
         <div className="container">
           <CrimeList />
         </div>
-        <div className="box" style={{ marginLeft: "20%" }}>
-          <Chart />
-        </div>
+        <span style={{ marginLeft: "20%" }}>
+        <Chart />
+        </span>
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>

@@ -28,7 +28,6 @@ const data = {
 
 const Chart = props => {
   return (
-    <div className="chart">
       <div
         style={{
           boxSizing: `border-box`,
@@ -36,12 +35,12 @@ const Chart = props => {
           height: `45%`,
           marginTop: `27px`,
           padding: `0 12px`,
-          outline: `none`
+          outline: `none`,
+          marginLeft: `27%`
         }}>
         <h2>Recent Crimes in your area</h2>
         <Doughnut data={data} />
       </div>
-    </div>
   );
 };
 
