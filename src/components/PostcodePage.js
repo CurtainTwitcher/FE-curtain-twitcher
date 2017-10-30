@@ -6,6 +6,7 @@ import MyMapComponent from "./postcodeComponents/googleMap";
 import "./PostcodePage.css";
 
 class PostcodePage extends React.Component {
+    
   componentDidMount() {
     this.props.fetchPostcodes(this.props.postcode);
   }
@@ -28,6 +29,7 @@ class PostcodePage extends React.Component {
             isMarkerShown
             longitude={this.props.longitude}
             latitude={this.props.latitude}
+            data = {this.props.data}
           />
         </div>
         <br />
@@ -35,7 +37,7 @@ class PostcodePage extends React.Component {
           <CrimeList />
         </div>
         <span style={{ marginLeft: "20%" }}>
-        <Chart />
+          <Chart />
         </span>
         <br />
         <br />

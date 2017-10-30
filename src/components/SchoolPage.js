@@ -27,6 +27,7 @@ class SchoolPage extends React.Component {
             isMarkerShown
             longitude={this.props.longitude}
             latitude={this.props.latitude}
+            data = {this.props.data}
           />
         </div>
         <br />
