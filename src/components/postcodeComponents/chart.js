@@ -37,8 +37,8 @@ const Chart = props => {
           marginTop: `27px`,
           padding: `0 12px`,
           outline: `none`
-        }}
-      >
+        }}>
+        <h2>Recent Crimes in your area</h2>
         <Doughnut data={data} />
       </div>
     </div>
