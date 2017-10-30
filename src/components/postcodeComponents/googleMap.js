@@ -42,7 +42,7 @@ const MyMapComponent = compose(
       >
         <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
           {/* MAP on each marker to generate a few */}
-          {dummy.map((crime, i) => {
+          {props.data.map((crime, i) => {
             return (
               <Marker
                 key={i}
