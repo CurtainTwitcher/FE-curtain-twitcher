@@ -1,3 +1,4 @@
+
 import React from "react";
 import {Line} from 'react-chartjs-2';
 import TrendsDummy from './graphTrendsDummy';
@@ -16,9 +17,9 @@ const dataSetData = dataTrend.map((crime, i) => {
     label: Object.keys(crime)[0],
     fill: false,
     lineTension: 0.1,
-    backgroundColor: `rgba(${red},${green},${blue},0.4)`,
+    backgroundColor: `rgba(${red},${green},${blue},0.8)`,
     borderColor: `rgba(${red},${green},${blue},1)`,
-    borderCapStyle: 'butt',
+    borderCapStyle: 'round',
     borderDash: [],
     borderDashOffset: 0.0,
     borderJoinStyle: 'miter',
@@ -42,8 +43,7 @@ const data = {
 const TrendGraph=(props) => {
   return (
     <div>
-      <h2>Crime Trends in your area
-      </h2>
+      <h2>Crime Trends in your area </h2>
       <Line data={data} />
     </div>
 
