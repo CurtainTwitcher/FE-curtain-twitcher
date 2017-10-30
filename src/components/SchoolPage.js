@@ -32,15 +32,15 @@ class SchoolPage extends React.Component {
         </div>
         <br />
         <div className="container">
-          <CrimeList />
+          {/* <CrimeList /> */}
         </div>
         <div className="box" style={{ marginLeft: "20%" }}>
-          <Chart />
+          {/* <Chart /> */}
         </div>
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
-          <TrendGraph />
+        {/* <TrendGraph /> */}
         </div>
       </div>
     );

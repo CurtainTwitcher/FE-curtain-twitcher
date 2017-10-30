@@ -41,7 +41,8 @@ class Homepage extends React.Component {
     event.preventDefault();
     this.setState({
       postcodeResults: true,
-      searchbarHome: false
+      searchbarHome: false,
+      schoolResults: false
     });
   }
 
