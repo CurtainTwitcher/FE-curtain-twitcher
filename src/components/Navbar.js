@@ -8,17 +8,17 @@ const Navbar = props => {
           <div className="bg-dark p-4">
             <ul className="nav justify-content-end">
               <li className="nav-item">
-                <a className="nav-link active" href="#">
+                <a className="nav-link" href="" onClick={props.onSubmit}>
                   Crimes
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="" onClick={props.handleSchools}>
                   Schools
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled" href="#">
+                <a className="nav-link disabled" href="">
                   Disabled
                 </a>
               </li>

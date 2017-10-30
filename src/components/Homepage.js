@@ -1,8 +1,9 @@
 import React from "react";
 import PostcodePage from "./PostcodePage";
+import SchoolPage from "./SchoolPage";
 import InvalidPostcode from "./InvalidPostcode";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import SearchBar from "./homepageComponents/Searchbar";
 import axios from "axios";
 
@@ -11,14 +12,16 @@ class Homepage extends React.Component {
     super(props);
     this.state = {
       postcode: "",
-      postcodeResults: false,
       searchbarHome: true,
+      postcodeResults: false,
+      schoolResults: false,
       badRequest: false,
       longitude: -2.2126309000000194,
       latitude: 53.4807593
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleSchools = this.handleSchools.bind(this);
     this.fetchPostcodes = this.fetchPostcodes.bind(this);
   }
 
@@ -32,6 +35,15 @@ class Homepage extends React.Component {
     this.setState({
       postcodeResults: true,
       searchbarHome: false
+    });
+  }
+
+  handleSchools(event) {
+    event.preventDefault();
+    this.setState({
+      searchbarHome: false,
+      postcodeResults: false,
+      schoolResults: true
     });
   }
 
@@ -49,7 +61,8 @@ class Homepage extends React.Component {
         this.setState({
           badRequest: true,
           searchbarHome: true,
-          postcodeResults: false
+          postcodeResults: false,
+          schoolResults: false
         });
         console.error(err);
       });
@@ -63,6 +76,7 @@ class Homepage extends React.Component {
           onChange={this.handleFormChange}
           postcode={this.state.postcode}
           postcodeResults={this.state.postcodeResults}
+          handleSchools={this.handleSchools}
         />
         <div className="App">
           <br />
@@ -76,6 +90,14 @@ class Homepage extends React.Component {
           {this.state.badRequest ? <InvalidPostcode /> : null}
           {this.state.postcodeResults ? (
             <PostcodePage
+              fetchPostcodes={this.fetchPostcodes}
+              postcode={this.state.postcode}
+              longitude={this.state.longitude}
+              latitude={this.state.latitude}
+            />
+          ) : null}
+          {this.state.schoolResults ? (
+            <SchoolPage
               fetchPostcodes={this.fetchPostcodes}
               postcode={this.state.postcode}
               longitude={this.state.longitude}

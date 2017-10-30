@@ -4,7 +4,7 @@ import Chart from "./postcodeComponents/chart";
 import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
 
-class PostcodePage extends React.Component {
+class SchoolPage extends React.Component {
   componentDidMount() {
     this.props.fetchPostcodes(this.props.postcode);
   }
@@ -19,7 +19,7 @@ class PostcodePage extends React.Component {
     return (
       <div>
         <h3>
-          Showing results for recent crimes near:{" "}
+          Showing results for schools near:{" "}
           <strong>{this.props.postcode}</strong>
         </h3>
         <div className="container">
@@ -46,4 +46,4 @@ class PostcodePage extends React.Component {
   }
 }
 
-export default PostcodePage;
+export default SchoolPage;

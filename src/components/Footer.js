@@ -6,7 +6,7 @@ const Footer = props => {
     // <div id="footer">
     <footer className="footer-distributed">
       <div className="footer-right">
-        <a href="#">
+        {/* <a href="#">
           <i className="fa fa-facebook" />
         </a>
         <a href="#">
@@ -14,7 +14,7 @@ const Footer = props => {
         </a>
         <a href="#">
           <i className="fa fa-linkedin" />
-        </a>
+        </a> */}
         <a href="https://github.com/CurtainTwitcher">
           <i className="fa fa-github" />
         </a>
@@ -22,13 +22,8 @@ const Footer = props => {
 
       <div className="footer-left">
         <p className="footer-links">
-          <a href="#">Home</a>
-          ·
-          <a href="#">About</a>
-          ·
-          <a href="#">Faq</a>
-          ·
-          <a href="#">Contact</a>
+          <a href="">Home</a> · <a href="">About</a> · <a href="">Faq</a> · {" "}
+          <a href="">Contact</a>
         </p>
 
         <p>NorthCoders &copy; 2017</p>
