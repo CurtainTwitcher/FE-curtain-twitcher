@@ -3,6 +3,7 @@ import CrimeList from "./postcodeComponents/CrimeList";
 import Chart from "./postcodeComponents/chart";
 import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
+import "./PostcodePage.css";
 
 class PostcodePage extends React.Component {
   componentDidMount() {
