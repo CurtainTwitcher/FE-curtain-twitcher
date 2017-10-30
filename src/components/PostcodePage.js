@@ -3,6 +3,7 @@ import CrimeList from "./postcodeComponents/CrimeList";
 import Chart from "./postcodeComponents/chart";
 import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
+import "./PostcodePage.css";
 
 class PostcodePage extends React.Component {
   componentDidMount() {
@@ -33,9 +34,9 @@ class PostcodePage extends React.Component {
         <div className="container">
           <CrimeList />
         </div>
-        <div className="box" style={{ marginLeft: "20%" }}>
-          <Chart />
-        </div>
+        <span style={{ marginLeft: "20%" }}>
+        <Chart />
+        </span>
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>

@@ -28,20 +28,19 @@ const data = {
 
 const Chart = props => {
   return (
-    <div className="chart">
       <div
         style={{
           boxSizing: `border-box`,
-          width: `45%`,
+          width: `70%`,
           height: `45%`,
           marginTop: `27px`,
           padding: `0 12px`,
-          outline: `none`
-        }}
-      >
+          outline: `none`,
+          marginLeft: `15%`
+        }}>
+        <h2>Recent Crimes in your area</h2>
         <Doughnut data={data} />
       </div>
-    </div>
   );
 };
 

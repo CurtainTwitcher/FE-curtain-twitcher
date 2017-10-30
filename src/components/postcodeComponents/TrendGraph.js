@@ -37,13 +37,22 @@ const dataSetData = dataTrend.map((crime, i) => {
 })
 
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
   datasets: dataSetData
 };
 const TrendGraph=(props) => {
   return (
-    <div>
-      <h2>Crime Trends in your area </h2>
+    <div style={{
+      boxSizing: `border-box`,
+      width: `100%`,
+      height: `45%`,
+      marginTop: `27px`,
+      padding: `0 12px`,
+      outline: `none`,
+      marginLeft: `0`
+    }}>
+      <h2>Crime Trends in your area (00's)</h2>
+      <p></p>
       <Line data={data} />
     </div>
 
