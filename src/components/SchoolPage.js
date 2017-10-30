@@ -40,7 +40,7 @@ class SchoolPage extends React.Component {
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
-        {/* <TrendGraph /> */}
+        {<TrendGraph />}
         </div>
       </div>
     );
