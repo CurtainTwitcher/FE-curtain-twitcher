@@ -3,10 +3,9 @@ import PostcodePage from "./PostcodePage";
 import SchoolPage from "./SchoolPage";
 import InvalidPostcode from "./InvalidPostcode";
 import Navbar from "./Navbar";
-// import Footer from "./Footer";
 import SearchBar from "./homepageComponents/Searchbar";
 import axios from "axios";
-// import crimeDummy from "./postcodeComponents/graphDataDummy";
+import crimeDummy from "./postcodeComponents/graphDataDummy";
 import schoolDummy from "./schoolComponents/schoolData";
 
 class Homepage extends React.Component {
@@ -22,7 +21,7 @@ class Homepage extends React.Component {
       // latitude: "",
       longitude: -2.2126309000000194,
       latitude: 53.4807593,
-      crimeData: [],
+      crimeData: crimeDummy,
       schoolData: schoolDummy
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -77,18 +76,18 @@ class Homepage extends React.Component {
   }
 
   fetchCrimes(lng, lat) {
-    axios
-      .get(`http://localhost:3001/api/crimes?lng=${lng}&lat=${lat}`)
-      .then(res => {
-        console.log("lng", lng);
-        console.log("lat", lat);
-        this.setState({
-          crimeData: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axios
+    //   .get(`http://localhost:3001/api/crimes?lng=${lng}&lat=${lat}`)
+    //   .then(res => {
+    //     console.log("lng", lng);
+    //     console.log("lat", lat);
+    //     this.setState({
+    //       crimeData: res.data
+    //     });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }
   fetchSchools() {
     // axios.get().then(res => {
