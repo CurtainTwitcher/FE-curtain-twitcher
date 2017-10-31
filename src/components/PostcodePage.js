@@ -6,14 +6,16 @@ import MyMapComponent from "./postcodeComponents/googleMap";
 import "./PostcodePage.css";
 
 class PostcodePage extends React.Component {
-    
   componentDidMount() {
+    console.log(this.props.longitude, this.props.latitude);
     this.props.fetchPostcodes(this.props.postcode);
+    this.props.fetchCrimes(this.props.longitude, this.props.latitude);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.postcode !== nextProps.postcode) {
       this.props.fetchPostcodes(this.props.postcode);
+      // this.props.fetchCrimes(this.props.longitude, this.props.latitude);
     }
   }
 
@@ -29,7 +31,7 @@ class PostcodePage extends React.Component {
             isMarkerShown
             longitude={this.props.longitude}
             latitude={this.props.latitude}
-            data = {this.props.data}
+            data={this.props.data}
           />
         </div>
         <br />
