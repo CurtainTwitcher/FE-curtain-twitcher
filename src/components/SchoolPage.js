@@ -1,7 +1,7 @@
 import React from "react";
-import CrimeList from "./postcodeComponents/CrimeList";
+import SchoolChartList from "./schoolComponents/schoolList";
 import Chart from "./postcodeComponents/chart";
-import TrendGraph from "./postcodeComponents/TrendGraph";
+import TrendGraph from "./schoolComponents/schoolList";
 import MyMapComponent from "./postcodeComponents/googleMap";
 
 class SchoolPage extends React.Component {
@@ -32,7 +32,7 @@ class SchoolPage extends React.Component {
         </div>
         <br />
         <div className="container">
-          {/* <CrimeList /> */}
+          {<SchoolChartList />}
         </div>
         <div className="box" style={{ marginLeft: "20%" }}>
           {/* <Chart /> */}
