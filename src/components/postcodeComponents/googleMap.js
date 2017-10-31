@@ -10,8 +10,6 @@ import {
   Marker
 } from "react-google-maps";
 
-import dummy from "./graphDataDummy";
-
 const MyMapComponent = compose(
   withStateHandlers(
     () => ({

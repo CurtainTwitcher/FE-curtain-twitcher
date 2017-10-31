@@ -4,6 +4,7 @@ import SchoolPage from "./SchoolPage";
 import InvalidPostcode from "./InvalidPostcode";
 import Navbar from "./Navbar";
 import SearchBar from "./homepageComponents/Searchbar";
+import HeadingTab from "./postcodeComponents/HeadingTabs";
 import axios from "axios";
 import crimeDummy from "./postcodeComponents/graphDataDummy";
 import schoolDummy from "./schoolComponents/schoolData";
@@ -110,6 +111,12 @@ class Homepage extends React.Component {
           schoolResults={this.state.schoolResults}
           handleSchools={this.handleSchools}
         />
+        {this.state.postcodeResults || this.state.schoolResults ? (
+          <HeadingTab
+            handleSchools={this.handleSchools}
+            onSubmit={this.handleFormSubmit}
+          />
+        ) : null}
         <div className="App">
           <br />
           {this.state.searchbarHome ? (
@@ -122,6 +129,8 @@ class Homepage extends React.Component {
           {this.state.badRequest ? <InvalidPostcode /> : null}
           {this.state.postcodeResults ? (
             <PostcodePage
+              handleSchools={this.handleSchools}
+              onSubmit={this.handleFormSubmit}
               fetchPostcodes={this.fetchPostcodes}
               fetchCrimes={this.fetchCrimes}
               postcode={this.state.postcode}
