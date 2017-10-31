@@ -7,7 +7,7 @@ import "./PostcodePage.css";
 
 class PostcodePage extends React.Component {
   componentDidMount() {
-    console.log(this.props.longitude, this.props.latitude);
+    // console.log(this.props.longitude, this.props.latitude);
     this.props.fetchPostcodes(this.props.postcode);
     this.props.fetchCrimes(this.props.longitude, this.props.latitude);
   }
