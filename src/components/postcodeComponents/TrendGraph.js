@@ -1,15 +1,15 @@
-
 import React from "react";
-import {Line} from 'react-chartjs-2';
-import TrendsDummy from './graphTrendsDummy';
+import { Line } from "react-chartjs-2";
+import TrendsDummy from "./graphTrendsDummy";
 
 let dataTrend = [];
 let name;
+
 const trends = TrendsDummy.map(crime => {
   name = crime.name;
-  dataTrend.push({[name]: Object.values(crime).slice(1)});
+  return dataTrend.push({ [name]: Object.values(crime).slice(1) });
 });
-console.log(dataTrend, 'crimes')
+
 const dataSetData = dataTrend.map((crime, i) => {
   const red = Math.floor(Math.random() * 256);
   const green = Math.floor(Math.random() * 256);
@@ -20,12 +20,12 @@ const dataSetData = dataTrend.map((crime, i) => {
     lineTension: 0.1,
     backgroundColor: `rgba(${red},${green},${blue},0.8)`,
     borderColor: `rgba(${red},${green},${blue},1)`,
-    borderCapStyle: 'round',
+    borderCapStyle: "round",
     borderDash: [],
     borderDashOffset: 0.0,
-    borderJoinStyle: 'miter',
+    borderJoinStyle: "miter",
     pointBorderColor: `rgba(${red},${green},${blue},1)`,
-    pointBackgroundColor: '#fff',
+    pointBackgroundColor: "#fff",
     pointBorderWidth: 1,
     pointHoverRadius: 5,
     pointHoverBackgroundColor: `rgba(${red},${green},${blue},1)`,
@@ -34,30 +34,40 @@ const dataSetData = dataTrend.map((crime, i) => {
     pointRadius: 1,
     pointHitRadius: 10,
     data: Object.values(crime)[0]
-  }
-})
+  };
+});
 
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+  labels: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August"
+  ],
   datasets: dataSetData
 };
-const TrendGraph=(props) => {
+const TrendGraph = props => {
   return (
-    <div style={{
-      boxSizing: `border-box`,
-      width: `100%`,
-      height: `45%`,
-      marginTop: `27px`,
-      padding: `0 12px`,
-      outline: `none`,
-      marginLeft: `0`
-    }}>
+    <div
+      style={{
+        boxSizing: `border-box`,
+        width: `100%`,
+        height: `45%`,
+        marginTop: `27px`,
+        padding: `0 12px`,
+        outline: `none`,
+        marginLeft: `0`
+      }}
+    >
       <h2>Crime Trends in your area (00's)</h2>
-      <p></p>
+      <p />
       <Line data={data} />
     </div>
-
   );
-}
+};
 
 export default TrendGraph;
