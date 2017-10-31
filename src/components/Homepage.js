@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 // import Footer from "./Footer";
 import SearchBar from "./homepageComponents/Searchbar";
 import axios from "axios";
-import crimeDummy from "./postcodeComponents/graphDataDummy";
+// import crimeDummy from "./postcodeComponents/graphDataDummy";
 import schoolDummy from "./schoolComponents/schoolData";
 
 class Homepage extends React.Component {
@@ -18,9 +18,11 @@ class Homepage extends React.Component {
       postcodeResults: false,
       schoolResults: false,
       badRequest: false,
+      // longitude: "",
+      // latitude: "",
       longitude: -2.2126309000000194,
       latitude: 53.4807593,
-      crimeData: crimeDummy,
+      crimeData: [],
       schoolData: schoolDummy
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -29,7 +31,6 @@ class Homepage extends React.Component {
     this.fetchPostcodes = this.fetchPostcodes.bind(this);
     this.fetchCrimes = this.fetchCrimes.bind(this);
     this.fetchSchools = this.fetchSchools.bind(this);
-
   }
 
   handleFormChange(event) {
@@ -75,20 +76,25 @@ class Homepage extends React.Component {
       });
   }
 
-  fetchCrimes() {
-    // axios.get().then(res => {
-    //   console.log(res.data)
-    // this.setState({
-    //   crimeData: res.data 
-    // })
-    // })
-    //   .catch(err => { console.log(err) })
-  } 
+  fetchCrimes(lng, lat) {
+    axios
+      .get(`http://localhost:3001/api/crimes?lng=${lng}&lat=${lat}`)
+      .then(res => {
+        console.log("lng", lng);
+        console.log("lat", lat);
+        this.setState({
+          crimeData: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   fetchSchools() {
-     // axios.get().then(res => {
-      // this.setState({
-      //   schoolData: res.data 
-      // })
+    // axios.get().then(res => {
+    // this.setState({
+    //   schoolData: res.data
+    // })
     //   console.log(res.data)
     // })
     //   .catch(err => { console.log(err) })
@@ -117,11 +123,11 @@ class Homepage extends React.Component {
           {this.state.postcodeResults ? (
             <PostcodePage
               fetchPostcodes={this.fetchPostcodes}
+              fetchCrimes={this.fetchCrimes}
               postcode={this.state.postcode}
               longitude={this.state.longitude}
               latitude={this.state.latitude}
-              data = {this.state.crimeData}
-              
+              data={this.state.crimeData}
             />
           ) : null}
           {this.state.schoolResults ? (
@@ -130,7 +136,7 @@ class Homepage extends React.Component {
               postcode={this.state.postcode}
               longitude={this.state.longitude}
               latitude={this.state.latitude}
-              data = {this.state.schoolData}
+              data={this.state.schoolData}
             />
           ) : null}
         </div>
