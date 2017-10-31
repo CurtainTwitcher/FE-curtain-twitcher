@@ -34,7 +34,7 @@ const Navbar = props => {
               alt=""
             />
           </a>
-          {props.postcodeResults ? (
+          {props.postcodeResults || props.schoolResults ? (
             <form className="form-inline" onSubmit={props.onSubmit}>
               <input
                 className="form-control mr-sm-2"
