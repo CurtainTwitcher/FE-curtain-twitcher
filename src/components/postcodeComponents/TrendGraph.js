@@ -9,6 +9,7 @@ const trends = TrendsDummy.map(crime => {
   name = crime.name;
   dataTrend.push({[name]: Object.values(crime).slice(1)});
 });
+console.log(dataTrend, 'crimes')
 const dataSetData = dataTrend.map((crime, i) => {
   const red = Math.floor(Math.random() * 256);
   const green = Math.floor(Math.random() * 256);

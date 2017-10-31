@@ -1,80 +1,4 @@
-
-Boards
-
-New stuff!
-F
-Points to mention in the project essaycurtain-twitcherFreeTeam VisibleShow Menu
-
-Resources
-Front-End
-School trend data
-1UAFrancis Broughton (francisbroughton)
-React.js and Geocoding with Google Maps Tutorial
-React Router documentation
-Google Maps API
-React High Charts
-Front-EndBack-End
-Police API
-HTML Reference Guide
-CSS Reference Guide
-https://github.com/TJAppsLab/knowledge_base/wiki/Advantages-of-using-Firebase
-D3 - Data Driven Documents
-Heat Map of Crime
-School inspections outcomes
-Links that LocationCounts use
-Back-End
-Config Files
-3
-Front-End
-CrimeStreetData format
-3
-Front-End
-CrimeStreet TRENDS format
-UAFrancis Broughton (francisbroughton)
-Front-End
-School Data
-Add a card…
-
-Problems Log
-Front-End
-parsing the postcode into lang & lat
-Front-End
-map not rendering due to long & lat being dependent on the user input
-Front-End
-Trends map, not getting a actual data. And displaying mulitple crime trends
-Front-End
-To toggle the top search bar from the home page.
-Add a card…
-
-To Do
-To help people identify how the neighbourhood is when they move, or are visiting any family or friends.
-Main features would include, Adding a comment, identifying user's location, and allowing them only to post if they are within a few miles.
-Maybe a login page if its necessary.
-Add a card…
-
-Backlog
-User Story
-As a user I would like to search for my postcode on the homepage
-Project Design and Overview Document
-1
-Back-End
-Create Express Server
-OTHarry Crank (haribo7891)
-Back-End
-Import Police Data to Database
-OTHarry Crank (haribo7891)
-Add a card…
-
-In Progress
-Add a card…
-
-Ready for Review
-Add a card…
-
-Merged / Completed
-
-
-[
+const SchoolTrendsDummy = [
 {
 "2006": "1",
 "2008": "1",
@@ -151,4 +75,6 @@ Merged / Completed
 "name": "University Technical College Leeds"
 }
 ]
+
+export default SchoolTrendsDummy;
 

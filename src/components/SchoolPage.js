@@ -1,7 +1,7 @@
 import React from "react";
 import SchoolChartList from "./schoolComponents/schoolList";
-import Chart from "./postcodeComponents/chart";
 import MyMapComponent from "./postcodeComponents/googleMap";
+
 
 class SchoolPage extends React.Component {
   componentDidMount() {
@@ -33,13 +33,9 @@ class SchoolPage extends React.Component {
         <div className="container">
           {<SchoolChartList />}
         </div>
-        <div className="box" style={{ marginLeft: "20%" }}>
-          {/* <Chart /> */}
-        </div>
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
-        {/* {<TrendGraph />} */}
         <h1>Ofsted score Grades</h1>
           <b>Grade 1 : Outstanding</b>
           <p>An outstanding school is highly effective in delivering outcomes that provide exceptionally well for all its pupils’ needs. This ensures that pupils are very well equipped for the next stage of their education, training or employment.</p>
