@@ -107,6 +107,7 @@ class Homepage extends React.Component {
           onChange={this.handleFormChange}
           postcode={this.state.postcode}
           postcodeResults={this.state.postcodeResults}
+          schoolResults={this.state.schoolResults}
           handleSchools={this.handleSchools}
         />
         <div className="App">
