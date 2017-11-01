@@ -11,7 +11,7 @@ const SearchBar = props => {
           border: `1px solid transparent`,
           width: `40%`,
           height: `32px`,
-          marginTop: `10%`,
+          marginTop: `2.5%`,
           padding: `0 12px`,
           borderRadius: `3px`,
           boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,

@@ -8,6 +8,8 @@ import HeadingTab from "./postcodeComponents/HeadingTabs";
 import axios from "axios";
 import crimeDummy from "./postcodeComponents/graphDataDummy";
 import schoolDummy from "./schoolComponents/schoolData";
+import IntroText from "./homepageComponents/IntroText";
+import HomeImage from "./homepageComponents/HomeImage";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -123,6 +125,7 @@ class Homepage extends React.Component {
             onSubmit={this.handleFormSubmit}
           />
         ) : null}
+        {this.state.searchbarHome ? <HomeImage /> : null}
         <div className="App">
           <br />
           {this.state.searchbarHome ? (
@@ -132,6 +135,10 @@ class Homepage extends React.Component {
               postcode={this.state.postcode}
             />
           ) : null}
+          <br />
+          {this.state.searchbarHome ?  <IntroText /> : null }
+          <br />
+          
           {this.state.badRequest ? <InvalidPostcode /> : null}
           {this.state.postcodeResults ? (
             <PostcodePage
