@@ -8,6 +8,7 @@ import HeadingTab from "./postcodeComponents/HeadingTabs";
 import axios from "axios";
 import crimeDummy from "./postcodeComponents/graphDataDummy";
 import schoolDummy from "./schoolComponents/schoolData";
+import IntroText from "./homepageComponents/IntroText";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -120,7 +121,8 @@ class Homepage extends React.Component {
         ) : null}
         <div className="App">
           <br />
-        
+          {this.state.searchbarHome ?  <IntroText /> : null }
+         
           {this.state.searchbarHome ? (
             <SearchBar
               handleFormSubmit={this.handleFormSubmit}
