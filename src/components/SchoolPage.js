@@ -40,7 +40,7 @@ class SchoolPage extends React.Component {
                   <div class="col-md-3">
                     <div class="well">
                       <h4 class="text-success"><span>Grade 1 : Outstanding</span></h4>An outstanding school is highly effective in delivering outcomes
-            that provide exceptionally well for all its pupils’ needs.
+            that provide exceptionally well for all its pupils’ needs. Pupils are well prepared for the next stage of their education, training or employment.
         </div>
                   </div>
                   <div class="col-md-3">
