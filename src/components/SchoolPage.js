@@ -4,7 +4,7 @@ import MyMapComponent from "./postcodeComponents/googleMap";
 
 class SchoolPage extends React.Component {
   componentDidMount() {
-    this.props.fetchPostcodes(this.props.postcode);
+    // this.props.fetchPostcodes(this.props.postcode);
     this.props.fetchSchools(this.props.longitude, this.props.latitude);
   }
 

@@ -22,10 +22,6 @@ class Homepage extends React.Component {
       badRequest: false,
       longitude: "",
       latitude: "",
-      // longitude: -2.2126309000000194,
-      // latitude: 53.4807593,
-      // crimeData: crimeDummy,
-      // schoolData: schoolDummy
       crimeData: [],
       schoolData: []
     };
@@ -33,7 +29,6 @@ class Homepage extends React.Component {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleSchools = this.handleSchools.bind(this);
     this.fetchPostcodes = this.fetchPostcodes.bind(this);
-    this.fetchCrimes = this.fetchCrimes.bind(this);
     this.fetchSchools = this.fetchSchools.bind(this);
   }
 
@@ -70,6 +65,19 @@ class Homepage extends React.Component {
           latitude: response.data.result.latitude
         });
       })
+      .then(res => {
+        axios
+          .get(
+            `https://curtain-twitcher.herokuapp.com/api/crimes?lng=${this.state
+              .longitude}&lat=${this.state.latitude}`
+          )
+          .then(res => {
+            this.setState({
+              badRequest: false,
+              crimeData: res.data
+            });
+          });
+      })
       .catch(err => {
         this.setState({
           badRequest: true,
@@ -81,22 +89,11 @@ class Homepage extends React.Component {
       });
   }
 
-  fetchCrimes(lng, lat) {
-    axios
-      .get(`http://localhost:3001/api/crimes?lng=${lng}&lat=${lat}`)
-      .then(res => {
-        this.setState({
-          crimeData: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
   fetchSchools(lng, lat) {
-    console.log("fetching schools", lng, lat);
     axios
-      .get(`http://localhost:3001/api/schools?lng=${lng}&lat=${lat}`)
+      .get(
+        `https://curtain-twitcher.herokuapp.com/api/schools?lng=${lng}&lat=${lat}`
+      )
       .then(res => {
         this.setState({
           schoolData: res.data
@@ -125,9 +122,12 @@ class Homepage extends React.Component {
             onSubmit={this.handleFormSubmit}
           />
         ) : null}
+
         {this.state.searchbarHome ? <HomeImage /> : null}
         <div className="App">
           <br />
+          {this.state.badRequest ? <InvalidPostcode /> : null}
+
           {this.state.searchbarHome ? (
             <SearchBar
               handleFormSubmit={this.handleFormSubmit}
@@ -136,32 +136,33 @@ class Homepage extends React.Component {
             />
           ) : null}
           <br />
-          {this.state.searchbarHome ?  <IntroText /> : null }
+          {this.state.searchbarHome ? <IntroText /> : null}
           <br />
-          
-          {this.state.badRequest ? <InvalidPostcode /> : null}
-          {this.state.postcodeResults ? (
-            <PostcodePage
-              handleSchools={this.handleSchools}
-              onSubmit={this.handleFormSubmit}
-              fetchPostcodes={this.fetchPostcodes}
-              fetchCrimes={this.fetchCrimes}
-              postcode={this.state.postcode}
-              longitude={this.state.longitude}
-              latitude={this.state.latitude}
-              data={this.state.crimeData}
-            />
-          ) : null}
-          {this.state.schoolResults ? (
-            <SchoolPage
-              fetchPostcodes={this.fetchPostcodes}
-              fetchSchools={this.fetchSchools}
-              postcode={this.state.postcode}
-              longitude={this.state.longitude}
-              latitude={this.state.latitude}
-              data={this.state.schoolData}
-            />
-          ) : null}
+
+          <div>
+            {this.state.postcodeResults ? (
+              <PostcodePage
+                handleSchools={this.handleSchools}
+                onSubmit={this.handleFormSubmit}
+                fetchPostcodes={this.fetchPostcodes}
+                fetchCrimes={this.fetchCrimes}
+                postcode={this.state.postcode}
+                longitude={this.state.longitude}
+                latitude={this.state.latitude}
+                data={this.state.crimeData}
+              />
+            ) : null}
+            {this.state.schoolResults ? (
+              <SchoolPage
+                fetchPostcodes={this.fetchPostcodes}
+                fetchSchools={this.fetchSchools}
+                postcode={this.state.postcode}
+                longitude={this.state.longitude}
+                latitude={this.state.latitude}
+                data={this.state.schoolData}
+              />
+            ) : null}
+          </div>
         </div>
       </div>
     );
