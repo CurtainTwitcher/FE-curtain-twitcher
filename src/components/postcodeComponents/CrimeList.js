@@ -12,7 +12,7 @@ const crimeTypes = dummy
 
 const CrimeChartList = props => {
   return (
-    <div>
+    <div className="crimeTable">
       <BootstrapTable
         data={dummy}
         striped={true}
