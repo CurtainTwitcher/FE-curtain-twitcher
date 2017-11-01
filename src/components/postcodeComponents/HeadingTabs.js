@@ -45,7 +45,7 @@ const HeadingTab = props => {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          ...
+         
         </div>
         <div
           className="tab-pane fade"
@@ -53,7 +53,7 @@ const HeadingTab = props => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          ...
+      
         </div>
         <div
           className="tab-pane fade"
@@ -61,7 +61,7 @@ const HeadingTab = props => {
           role="tabpanel"
           aria-labelledby="pills-contact-tab"
         >
-          ...
+        
         </div>
       </div>
     </div>
