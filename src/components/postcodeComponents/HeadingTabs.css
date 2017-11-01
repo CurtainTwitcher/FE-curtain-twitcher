@@ -1,0 +1,13 @@
+#act {
+  background-color: #343a40;
+  color: white;
+}
+
+#nonAct {
+  color: #343a40;
+  background-color: white;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+

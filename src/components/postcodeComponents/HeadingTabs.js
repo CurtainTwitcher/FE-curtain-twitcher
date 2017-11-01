@@ -1,4 +1,5 @@
 import React from "react";
+import './HeadingTabs.css';
 
 const HeadingTab = props => {
   return (
@@ -10,9 +11,9 @@ const HeadingTab = props => {
         role="tablist"
       >
         <li className="nav-item">
-          <a
-            className="nav-link active bg-dark"
-            id="pills-home-tab"
+          <button
+            className="btn"
+            id={props.postcode ? 'act' : 'nonAct'}
             data-toggle="pill"
             href="#pills-home"
             role="tab"
@@ -21,12 +22,12 @@ const HeadingTab = props => {
             onClick={props.onSubmit}
           >
             Crimes
-          </a>
+          </button>
         </li>
         <li className="nav-item">
-          <a
-            className="nav-link"
-            id="pills-profile-tab"
+          <button
+            className="btn"
+            id={props.school ? 'act' : 'nonAct'}
             data-toggle="pill"
             href="#pills-profile"
             role="tab"
@@ -35,7 +36,7 @@ const HeadingTab = props => {
             onClick={props.handleSchools}
           >
             Schools
-          </a>
+          </button>
         </li>
       </ul>
       <div className="tab-content" id="pills-tabContent">

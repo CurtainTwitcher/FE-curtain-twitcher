@@ -120,6 +120,8 @@ class Homepage extends React.Component {
           <HeadingTab
             handleSchools={this.handleSchools}
             onSubmit={this.handleFormSubmit}
+            postcode={this.state.postcodeResults}
+            school={this.state.schoolResults}
           />
         ) : null}
 
