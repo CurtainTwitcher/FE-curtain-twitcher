@@ -15,7 +15,7 @@ class PostcodePage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.postcode !== nextProps.postcode) {
       this.props.fetchPostcodes(this.props.postcode);
-      // this.props.fetchCrimes(this.props.longitude, this.props.latitude);
+      this.props.fetchCrimes(this.props.longitude, this.props.latitude);
     }
   }
 
@@ -36,7 +36,7 @@ class PostcodePage extends React.Component {
         </div>
         <br />
         <div className="container">
-          <CrimeList />
+          <CrimeList data={this.props.data} />
         </div>
         <span style={{ marginLeft: "20%" }}>
           <Chart />

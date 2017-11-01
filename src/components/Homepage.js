@@ -18,12 +18,14 @@ class Homepage extends React.Component {
       postcodeResults: false,
       schoolResults: false,
       badRequest: false,
-      // longitude: "",
-      // latitude: "",
-      longitude: -2.2126309000000194,
-      latitude: 53.4807593,
-      crimeData: crimeDummy,
-      schoolData: schoolDummy
+      longitude: "",
+      latitude: "",
+      // longitude: -2.2126309000000194,
+      // latitude: 53.4807593,
+      // crimeData: crimeDummy,
+      // schoolData: schoolDummy
+      crimeData: [],
+      schoolData: []
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -78,27 +80,30 @@ class Homepage extends React.Component {
   }
 
   fetchCrimes(lng, lat) {
-    // axios
-    //   .get(`http://localhost:3001/api/crimes?lng=${lng}&lat=${lat}`)
-    //   .then(res => {
-    //     console.log("lng", lng);
-    //     console.log("lat", lat);
-    //     this.setState({
-    //       crimeData: res.data
-    //     });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios
+      .get(`http://localhost:3001/api/crimes?lng=${lng}&lat=${lat}`)
+      .then(res => {
+        this.setState({
+          crimeData: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
-  fetchSchools() {
-    // axios.get().then(res => {
-    // this.setState({
-    //   schoolData: res.data
-    // })
-    //   console.log(res.data)
-    // })
-    //   .catch(err => { console.log(err) })
+  fetchSchools(lng, lat) {
+    console.log("fetching schools", lng, lat);
+    axios
+      .get(`http://localhost:3001/api/schools?lng=${lng}&lat=${lat}`)
+      .then(res => {
+        this.setState({
+          schoolData: res.data
+        });
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -143,6 +148,7 @@ class Homepage extends React.Component {
           {this.state.schoolResults ? (
             <SchoolPage
               fetchPostcodes={this.fetchPostcodes}
+              fetchSchools={this.fetchSchools}
               postcode={this.state.postcode}
               longitude={this.state.longitude}
               latitude={this.state.latitude}

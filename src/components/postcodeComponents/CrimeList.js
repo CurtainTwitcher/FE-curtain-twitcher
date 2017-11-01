@@ -14,7 +14,7 @@ const CrimeChartList = props => {
   return (
     <div>
       <BootstrapTable
-        data={dummy}
+        data={props.data}
         striped={true}
         hover={true}
         condensed={true}

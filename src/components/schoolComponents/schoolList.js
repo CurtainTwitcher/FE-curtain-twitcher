@@ -18,7 +18,7 @@ class SchoolChartList extends React.Component {
   render() {
     return (
       <BootstrapTable
-        data={schoolData}
+        data={this.props.data}
         striped={true}
         hover={true}
         condensed={true}
