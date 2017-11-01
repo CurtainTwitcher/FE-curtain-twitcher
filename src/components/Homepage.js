@@ -10,14 +10,12 @@ import crimeDummy from "./postcodeComponents/graphDataDummy";
 import schoolDummy from "./schoolComponents/schoolData";
 import IntroText from "./homepageComponents/IntroText";
 import HomeImage from "./homepageComponents/HomeImage";
-import LoadingPage from "./LoadingPage";
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       postcode: "",
-      loading: true,
       searchbarHome: true,
       postcodeResults: false,
       schoolResults: false,
@@ -31,7 +29,6 @@ class Homepage extends React.Component {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleSchools = this.handleSchools.bind(this);
     this.fetchPostcodes = this.fetchPostcodes.bind(this);
-    this.fetchCrimes = this.fetchCrimes.bind(this);
     this.fetchSchools = this.fetchSchools.bind(this);
   }
 
@@ -68,6 +65,19 @@ class Homepage extends React.Component {
           latitude: response.data.result.latitude
         });
       })
+      .then(res => {
+        axios
+          .get(
+            `https://curtain-twitcher.herokuapp.com/api/crimes?lng=${this.state
+              .longitude}&lat=${this.state.latitude}`
+          )
+          .then(res => {
+            this.setState({
+              badRequest: false,
+              crimeData: res.data
+            });
+          });
+      })
       .catch(err => {
         this.setState({
           badRequest: true,
@@ -79,20 +89,6 @@ class Homepage extends React.Component {
       });
   }
 
-  fetchCrimes(lng, lat) {
-    axios
-      .get(
-        `https://curtain-twitcher.herokuapp.com/api/crimes?lng=${lng}&lat=${lat}`
-      )
-      .then(res => {
-        this.setState({
-          crimeData: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
   fetchSchools(lng, lat) {
     axios
       .get(
@@ -130,6 +126,8 @@ class Homepage extends React.Component {
         {this.state.searchbarHome ? <HomeImage /> : null}
         <div className="App">
           <br />
+          {this.state.badRequest ? <InvalidPostcode /> : null}
+
           {this.state.searchbarHome ? (
             <SearchBar
               handleFormSubmit={this.handleFormSubmit}
@@ -138,8 +136,7 @@ class Homepage extends React.Component {
             />
           ) : null}
           <br />
-          {this.state.badRequest ? <InvalidPostcode /> : null}
-          {this.state.badRequest ? null : <IntroText />}
+          {this.state.searchbarHome ? <IntroText /> : null}
           <br />
 
           <div>
