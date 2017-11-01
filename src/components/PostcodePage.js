@@ -44,6 +44,7 @@ class PostcodePage extends React.Component {
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
+        <p></p>
           <TrendGraph />
         </div>
       </div>

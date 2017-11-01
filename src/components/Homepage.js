@@ -120,6 +120,7 @@ class Homepage extends React.Component {
         ) : null}
         <div className="App">
           <br />
+        
           {this.state.searchbarHome ? (
             <SearchBar
               handleFormSubmit={this.handleFormSubmit}
