@@ -40,13 +40,13 @@ class PostcodePage extends React.Component {
           <CrimeList data={this.props.data} />
         </div>
         <span style={{ marginLeft: "20%" }}>
-          <Chart />
+          <Chart data={this.props.data} />
         </span>
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
           <p />
-          <TrendGraph />
+          <TrendGraph data={this.props.data} />
         </div>
       </div>
     );
