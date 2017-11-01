@@ -1,6 +1,7 @@
 import React from "react";
 import SchoolChartList from "./schoolComponents/schoolList";
 import MyMapComponent from "./postcodeComponents/googleMap";
+import "./SchoolPage.css"
 
 class SchoolPage extends React.Component {
   componentDidMount() {
@@ -31,43 +32,50 @@ class SchoolPage extends React.Component {
         </div>
         <br />
         <div className="container">
+          <h1>Ofsted score Grades</h1>
+          <div className="box">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="well">
+                      <h4 class="text-success"><span>Grade 1 : Outstanding</span></h4>An outstanding school is highly effective in delivering outcomes
+            that provide exceptionally well for all its pupils’ needs.
+        </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="well">
+                      <h4 class="text-success"><span>Grade 2 : Good
+            </span></h4><b />A good school is effective in delivering outcomes that provide well
+            for all its pupils’ needs. Pupils are well prepared for the next stage of their education, training or employment.
+        </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="well">
+                      <h4 class="text-warning"><span>Grade 3 : Improvement needed</span></h4>A school that requires improvement is not yet a good school, but it
+            is not inadequate. This school will receive a full inspection within 24 months from the date of this inspection.
+        </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="well">
+                      <h4 class="text-danger"><span>Grade 4 : Inadequate</span></h4>A school that has serious weaknesses is inadequate overall and
+            requires significant improvement but leadership and management are judged to be Grade 3 or better. This school will receive regular monitoring by Ofsted inspectors.
+        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <b>Grade 9 : N/A</b>
+          <p>Grading is not required for this area of education. </p>
+        </div>
+
+        <div className="container">
           <SchoolChartList data={this.props.data} />
         </div>
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
-          <h1>Ofsted score Grades</h1>
-          <b>Grade 1 : Outstanding</b>
-          <p>
-            An outstanding school is highly effective in delivering outcomes
-            that provide exceptionally well for all its pupils’ needs. This
-            ensures that pupils are very well equipped for the next stage of
-            their education, training or employment.
-          </p>
-          <b>Grade 2 : Good</b>
-          <p>
-            A good school is effective in delivering outcomes that provide well
-            for all its pupils’ needs. Pupils are well prepared for the next
-            stage of their education, training or employment.
-          </p>
-          <b>Grade 3 : Requires improvement</b>
-          <p>
-            A school that requires improvement is not yet a good school, but it
-            is not inadequate. This school will receive a full inspection within
-            24 months from the date of this inspection.
-          </p>
-          <b>Grade 4 : Inadequate</b>
-          <p>
-            A school that has serious weaknesses is inadequate overall and
-            requires significant improvement but leadership and management are
-            judged to be Grade 3 or better. This school will receive regular
-            monitoring by Ofsted inspectors. A school that requires special
-            measures is one where the school is failing to give its pupils an
-            acceptable standard of education and the school’s leaders, managers
-            or governors have not demonstrated that they have the capacity to
-            secure the necessary improvement in the school. This school will
-            receive regular monitoring by Ofsted inspectors.
-          </p>
         </div>
       </div>
     );

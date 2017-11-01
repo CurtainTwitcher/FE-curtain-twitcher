@@ -61,7 +61,7 @@ const HeadingTab = props => {
           role="tabpanel"
           aria-labelledby="pills-contact-tab"
         >
-          ...
+        
         </div>
       </div>
     </div>
