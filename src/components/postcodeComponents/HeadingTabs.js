@@ -3,6 +3,7 @@ import React from "react";
 const HeadingTab = props => {
   return (
     <div className="container">
+
       <ul
         className="nav nav-pills mb-3 justify-content-end"
         id="pills-tab"
@@ -10,7 +11,7 @@ const HeadingTab = props => {
       >
         <li className="nav-item">
           <a
-            className="nav-link active"
+            className="nav-link active bg-dark"
             id="pills-home-tab"
             data-toggle="pill"
             href="#pills-home"

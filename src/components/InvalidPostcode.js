@@ -1,8 +1,8 @@
 import React from "react";
-
+import './InvalidPostcode.css'
 const InvalidPostcode = props => {
   return (
-    <div>
+    <div className="background">
       <br />
       <i className="fa fa-spinner fa-pulse fa-3x fa-fw" />
       <span className="sr-only">Loading...</span>
