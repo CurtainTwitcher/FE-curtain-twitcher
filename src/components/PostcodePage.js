@@ -26,12 +26,6 @@ class PostcodePage extends React.Component {
     if (this.props.postcode !== nextProps.postcode) {
       this.props.fetchPostcodes(this.props.postcode);
     }
-    if (
-      this.props.longitude !== nextProps.longitude ||
-      this.props.latitude !== nextProps.latitude
-    ) {
-      // this.fetchTrends(this.props.longitude, this.props.latitude);
-    }
   }
 
   filterCrimeTypes (crimeType) {
