@@ -50,7 +50,7 @@ const TrendGraph = props => {
       "July",
       "August"
     ],
-    datasets: props.dataSetData
+    datasets: props.dataSets
   };
 
   return (
