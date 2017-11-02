@@ -15,6 +15,7 @@ class CrimeChartList extends React.Component {
     super(props);
     this.afterColumnFilter = this.afterColumnFilter.bind(this);
   }
+
   afterColumnFilter(filterConds, result) {
     if (filterConds === null) return;
     if (filterConds.crimeType.value !== this.props.crimeType) {
@@ -22,7 +23,7 @@ class CrimeChartList extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const options = {
       afterColumnFilter: this.afterColumnFilter
     };
@@ -55,7 +56,7 @@ class CrimeChartList extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default CrimeChartList;
 
