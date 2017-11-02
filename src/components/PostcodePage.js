@@ -45,7 +45,7 @@ class PostcodePage extends React.Component {
           <strong>{this.props.postcode}</strong>
         </h3>
         <div className="container">
-          <p>
+          <p style={{textAlign: "centre"}}>
             The crime data on this website has been taken from the Home Office
             on behalf of the police forces in England and Wales, Northern
             Ireland and the British Transport police. Data is submitted for
