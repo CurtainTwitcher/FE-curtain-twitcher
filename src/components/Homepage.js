@@ -10,7 +10,7 @@ import crimeDummy from "./postcodeComponents/graphDataDummy";
 import schoolDummy from "./schoolComponents/schoolData";
 import IntroText from "./homepageComponents/IntroText";
 import HomeImage from "./homepageComponents/HomeImage";
-import _ from 'underscore';
+import _ from "underscore";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -26,11 +26,10 @@ class Homepage extends React.Component {
       crimeData: [],
       schoolData: [],
 
-      searchRadius: 0.25
+      searchRadius: 0.25,
 
       data: [],
       dataSets: []
-
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -75,12 +74,13 @@ class Homepage extends React.Component {
       })
       .then(res => {
         axios
-        .get(
-          `https://curtain-twitcher.herokuapp.com/api/crimes?lng=${this.state
-          .longitude}&lat=${this.state.latitude}&dis=${this.state.searchRadius}`
-        )
-        .then(res => {
-          console.log('UPDATING STATE', res.data.length)
+          .get(
+            `https://curtain-twitcher.herokuapp.com/api/crimes?lng=${this.state
+              .longitude}&lat=${this.state.latitude}&dis=${this.state
+              .searchRadius}`
+          )
+          .then(res => {
+            console.log("UPDATING STATE", res.data.length);
             this.setState({
               badRequest: false,
               crimeData: res.data
@@ -173,11 +173,10 @@ class Homepage extends React.Component {
       });
   }
 
-
-  getRadiusValue (searchRadius) {
-    this.setState({searchRadius});
-    this.fetchPostcodes(this.state.postcode)
-
+  getRadiusValue(searchRadius) {
+    this.setState({ searchRadius });
+    this.fetchPostcodes(this.state.postcode);
+  }
   fetchTrends(lng, lat) {
     let dataTrend = [];
     let dataSetData;
@@ -232,7 +231,6 @@ class Homepage extends React.Component {
       .catch(error => {
         console.error(error);
       });
-
   }
 
   render() {
@@ -282,12 +280,9 @@ class Homepage extends React.Component {
                 longitude={this.state.longitude}
                 latitude={this.state.latitude}
                 data={this.state.crimeData}
-
                 getRadiusValue={this.getRadiusValue}
                 value={this.state.searchRadius}
-
                 dataSets={this.state.dataSets}
-
               />
             ) : null}
             {this.state.schoolResults ? (
