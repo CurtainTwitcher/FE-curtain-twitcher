@@ -1,7 +1,5 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import TrendsDummy from "./graphTrendsDummy";
-
 
 const TrendGraph = props => {
   const data = {

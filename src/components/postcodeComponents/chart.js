@@ -1,7 +1,6 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import "./Graph.css";
-import crimes from "../helpers/chartDataCreator";
 import _ from "underscore";
 
 const Chart = props => {

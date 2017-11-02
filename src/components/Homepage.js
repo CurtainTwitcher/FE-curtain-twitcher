@@ -6,8 +6,6 @@ import Navbar from "./Navbar";
 import SearchBar from "./homepageComponents/Searchbar";
 import HeadingTab from "./postcodeComponents/HeadingTabs";
 import axios from "axios";
-import crimeDummy from "./postcodeComponents/graphDataDummy";
-import schoolDummy from "./schoolComponents/schoolData";
 import IntroText from "./homepageComponents/IntroText";
 import HomeImage from "./homepageComponents/HomeImage";
 import _ from "underscore";
@@ -80,7 +78,6 @@ class Homepage extends React.Component {
               .searchRadius}`
           )
           .then(res => {
-            console.log("UPDATING STATE", res.data.length);
             this.setState({
               badRequest: false,
               crimeData: res.data
@@ -133,7 +130,6 @@ class Homepage extends React.Component {
                 data: Object.values(crime)[0]
               };
             });
-            console.log(dataSets);
             this.setState({
               dataSets
             });
