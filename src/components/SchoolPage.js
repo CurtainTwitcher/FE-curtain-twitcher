@@ -34,31 +34,31 @@ class SchoolPage extends React.Component {
         <div className="container">
           <h1>Ofsted score Grades</h1>
           <div className="box">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="row">
-                  <div class="col-md-3">
-                    <div class="well">
-                      <h4 class="text-success"><span>Grade 1 : Outstanding</span></h4>An outstanding school is highly effective in delivering outcomes
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="row">
+                  <div className="col-md-3">
+                    <div className="well">
+                      <h4 className="text-success"><span>Grade 1 : Outstanding</span></h4>An outstanding school is highly effective in delivering outcomes
             that provide exceptionally well for all its pupils’ needs. Pupils are well prepared for the next stage of their education, training or employment.
         </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="well">
-                      <h4 class="text-success"><span>Grade 2 : Good
+                  <div className="col-md-3">
+                    <div className="well">
+                      <h4 className="text-success"><span>Grade 2 : Good
             </span></h4><b />A good school is effective in delivering outcomes that provide well
             for all its pupils’ needs. Pupils are well prepared for the next stage of their education, training or employment.
         </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="well">
-                      <h4 class="text-warning"><span>Grade 3 : Improvement needed</span></h4>A school that requires improvement is not yet a good school, but it
+                  <div className="col-md-3">
+                    <div className="well">
+                      <h4 className="text-warning"><span>Grade 3 : Improvement needed</span></h4>A school that requires improvement is not yet a good school, but it
             is not inadequate. This school will receive a full inspection within 24 months from the date of this inspection.
         </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="well">
-                      <h4 class="text-danger"><span>Grade 4 : Inadequate</span></h4>A school that has serious weaknesses is inadequate overall and
+                  <div className="col-md-3">
+                    <div className="well">
+                      <h4 className="text-danger"><span>Grade 4 : Inadequate</span></h4>A school that has serious weaknesses is inadequate overall and
             requires significant improvement but leadership and management are judged to be Grade 3 or better. This school will receive regular monitoring by Ofsted inspectors.
         </div>
                   </div>

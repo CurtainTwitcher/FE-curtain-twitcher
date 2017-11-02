@@ -4,7 +4,7 @@ import Chart from "./postcodeComponents/chart";
 import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
 import "./PostcodePage.css";
-import Horizontal from './sliderComponent/slider';
+import HorizontalSlider from './sliderComponent/slider';
 import 'react-rangeslider/lib/index.css';
 
 class PostcodePage extends React.Component {
@@ -41,7 +41,7 @@ class PostcodePage extends React.Component {
           <div className="slider slider-horizontal">
             <br/>
             <h5>Slide to increase/decrease crime radius</h5>
-            <Horizontal />
+            <HorizontalSlider value={this.props.value} getRadiusValue={this.props.getRadiusValue} />
           </div>
         </div>
         <br />
