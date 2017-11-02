@@ -39,6 +39,21 @@ class PostcodePage extends React.Component {
           Showing results for recent crimes near:{" "}
           <strong>{this.props.postcode}</strong>
         </h3>
+
+        <div className="container">
+          <p>
+          The crime data on this website has been taken from the Home Office on behalf of the police forces in England and Wales, 
+          Northern Ireland and the British Transport police. Data is submitted for publication on behalf of the data owner, the Chief Constable, of the respective force for which the data relates. 
+          Note crime data is two months behind
+          </p>
+        </div>
+        <div className="container">
+          <MyMapComponent
+            isMarkerShown
+            longitude={this.props.longitude}
+            latitude={this.props.latitude}
+            data={this.props.data}
+          />
         <div className="mapAndSlider container">
           <div className="map">
             <MyMapComponent
@@ -67,6 +82,7 @@ class PostcodePage extends React.Component {
           <p />
           <TrendGraph dataSets={this.props.dataSets} />
         </div>
+        
       </div>
     );
   }

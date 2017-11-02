@@ -26,7 +26,7 @@ const CrimeChartList = props => {
           filter={{ type: "SelectFilter", options: crimeTypes }}
           width="300"
         >
-          Crime Type{" "}
+          Crime Type
         </TableHeaderColumn>
         <TableHeaderColumn dataField="streetName" width="300">
           Street Name
