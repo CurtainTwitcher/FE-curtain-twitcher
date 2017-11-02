@@ -28,7 +28,7 @@ const TrendGraph = props => {
         marginLeft: `0`
       }}
     >
-      <h2>Crime Trends in your area (00's)</h2>
+      <h2>Crime Trends in your area</h2>
       <p />
       <Line data={data} />
     </div>

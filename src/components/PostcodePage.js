@@ -1,7 +1,6 @@
 import React from "react";
 
 import CrimeList from "./postcodeComponents/CrimeList";
-import Chart from "./postcodeComponents/chart";
 import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
 import "./PostcodePage.css";
@@ -34,7 +33,8 @@ class PostcodePage extends React.Component {
   }
 
   filterCrimes(arr) {
-    return arr.filter(crime => crime.crimeType.includes(this.state.crimeType))
+    return this.state.crimeType === 'all data' ? arr
+    : arr.filter(crime => crime.crimeType.includes(this.state.crimeType));
   }
 
   render() {
@@ -77,9 +77,6 @@ class PostcodePage extends React.Component {
         <div className="container">
           <CrimeList crimeType={this.state.crimeType} data={this.props.data} filterCrimeTypes={this.filterCrimeTypes} />
         </div>
-        <span style={{ marginLeft: "20%" }}>
-          <Chart data={this.props.data} />
-        </span>
         <br />
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
