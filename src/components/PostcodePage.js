@@ -4,6 +4,8 @@ import Chart from "./postcodeComponents/chart";
 import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
 import "./PostcodePage.css";
+import Horizontal from './sliderComponent/slider';
+import 'react-rangeslider/lib/index.css';
 
 class PostcodePage extends React.Component {
   // componentDidMount() {
@@ -27,13 +29,20 @@ class PostcodePage extends React.Component {
           Showing results for recent crimes near:{" "}
           <strong>{this.props.postcode}</strong>
         </h3>
-        <div className="container">
-          <MyMapComponent
-            isMarkerShown
-            longitude={this.props.longitude}
-            latitude={this.props.latitude}
-            data={this.props.data}
-          />
+        <div className="mapAndSlider container">
+          <div className="map">
+            <MyMapComponent
+              isMarkerShown
+              longitude={this.props.longitude}
+              latitude={this.props.latitude}
+              data={this.props.data}
+            />
+          </div>
+          <div className="slider slider-horizontal">
+            <br/>
+            <h5>Slide to increase/decrease crime radius</h5>
+            <Horizontal />
+          </div>
         </div>
         <br />
         <div className="container">
