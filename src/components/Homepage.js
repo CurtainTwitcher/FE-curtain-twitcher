@@ -138,14 +138,6 @@ class Homepage extends React.Component {
               dataSets
             });
           });
-        // let trend = response.data.map(crime => {
-        //   return dataTrend.push({
-        //     [crime.name]: Object.values(crime).slice(1)
-        //   });
-        //   this.setState({
-        //     data: dataTrend
-        //   });
-        // });
       })
       .catch(err => {
         this.setState({
@@ -171,6 +163,7 @@ class Homepage extends React.Component {
       .catch(err => {
         console.log(err);
       });
+      
   }
 
   getRadiusValue(searchRadius) {

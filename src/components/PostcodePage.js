@@ -12,7 +12,10 @@ class PostcodePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      crimeType: '',
       trendData: []
+    };
+    this.filterCrimeTypes = this.filterCrimeTypes.bind(this);
     };
   }
 
@@ -30,6 +33,15 @@ class PostcodePage extends React.Component {
     ) {
       // this.fetchTrends(this.props.longitude, this.props.latitude);
     }
+  }
+
+  filterCrimeTypes (crimeType) {
+    this.setState({crimeType});
+    console.log('CRIME', crimeType);
+  }
+
+  filterCrimes(arr) {
+    return arr.filter(crime => crime.crimeType.includes(this.state.crimeType))
   }
 
   render() {
@@ -56,7 +68,7 @@ class PostcodePage extends React.Component {
               isMarkerShown
               longitude={this.props.longitude}
               latitude={this.props.latitude}
-              data={this.props.data}
+              data={this.filterCrimes(this.props.data)}
             />
           </div>
           <div className="slider slider-horizontal">
@@ -70,7 +82,7 @@ class PostcodePage extends React.Component {
         </div>
         <br />
         <div className="container">
-          <CrimeList data={this.props.data} />
+          <CrimeList crimeType={this.state.crimeType} data={this.props.data} filterCrimeTypes={this.filterCrimeTypes} />
         </div>
         <span style={{ marginLeft: "20%" }}>
           <Chart data={this.props.data} />
