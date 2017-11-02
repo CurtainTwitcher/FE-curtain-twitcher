@@ -25,7 +25,12 @@ class Homepage extends React.Component {
       latitude: "",
       crimeData: [],
       schoolData: [],
+
       searchRadius: 0.25
+
+      data: [],
+      dataSets: []
+
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -82,6 +87,66 @@ class Homepage extends React.Component {
             });
           });
       })
+      .then(res => {
+        let dataTrend = [];
+        let dataSets = [];
+
+        axios
+          .get(
+            `https://curtain-twitcher.herokuapp.com/api/crimes/trends?lng=${this
+              .state.longitude}&lat=${this.state.latitude}`
+          )
+          .then(response => {
+            this.setState({
+              data: response.data
+            });
+          })
+          .then(res => {
+            this.state.data.map(crime => {
+              return dataTrend.push({
+                [crime.name]: Object.values(crime).slice(1)
+              });
+            });
+            dataSets = dataTrend.map(crime => {
+              const red = Math.floor(Math.random() * 256);
+              const green = Math.floor(Math.random() * 256);
+              const blue = Math.floor(Math.random() * 256);
+              return {
+                label: Object.keys(crime)[0],
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: `rgba(${red},${green},${blue},0.8)`,
+                borderColor: `rgba(${red},${green},${blue},1)`,
+                borderCapStyle: "round",
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: "miter",
+                pointBorderColor: `rgba(${red},${green},${blue},1)`,
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: `rgba(${red},${green},${blue},1)`,
+                pointHoverBorderColor: `rgba(${red},${green},${blue},1)`,
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: Object.values(crime)[0]
+              };
+            });
+            console.log(dataSets);
+            this.setState({
+              dataSets
+            });
+          });
+        // let trend = response.data.map(crime => {
+        //   return dataTrend.push({
+        //     [crime.name]: Object.values(crime).slice(1)
+        //   });
+        //   this.setState({
+        //     data: dataTrend
+        //   });
+        // });
+      })
       .catch(err => {
         this.setState({
           badRequest: true,
@@ -102,16 +167,72 @@ class Homepage extends React.Component {
         this.setState({
           schoolData: res.data
         });
-        console.log(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   }
 
+
   getRadiusValue (searchRadius) {
     this.setState({searchRadius});
     this.fetchPostcodes(this.state.postcode)
+
+  fetchTrends(lng, lat) {
+    let dataTrend = [];
+    let dataSetData;
+    axios
+      .get(
+        `https://curtain-twitcher.herokuapp.com/api/crimes/trends?lng=${lng}&lat=${lat}`
+      )
+      .then(res => {
+        let trend = res.data
+          .map(crime => {
+            return dataTrend.push({
+              [crime.name]: Object.values(crime).slice(1)
+            });
+            this.setState({
+              data: trend
+            });
+          })
+          .then(res => {
+            dataSetData = dataTrend.map((crime, i) => {
+              const red = Math.floor(Math.random() * 256);
+              const green = Math.floor(Math.random() * 256);
+              const blue = Math.floor(Math.random() * 256);
+              return {
+                label: Object.keys(crime)[0],
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: `rgba(${red},${green},${blue},0.8)`,
+                borderColor: `rgba(${red},${green},${blue},1)`,
+                borderCapStyle: "round",
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: "miter",
+                pointBorderColor: `rgba(${red},${green},${blue},1)`,
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: `rgba(${red},${green},${blue},1)`,
+                pointHoverBorderColor: `rgba(${red},${green},${blue},1)`,
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: Object.values(crime)[0]
+              }.then(res => {
+                console.log("dataSetData", dataSetData);
+                this.setState({
+                  trendData: dataSetData
+                });
+              });
+            });
+          });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
   }
 
   render() {
@@ -161,8 +282,12 @@ class Homepage extends React.Component {
                 longitude={this.state.longitude}
                 latitude={this.state.latitude}
                 data={this.state.crimeData}
+
                 getRadiusValue={this.getRadiusValue}
                 value={this.state.searchRadius}
+
+                dataSets={this.state.dataSets}
+
               />
             ) : null}
             {this.state.schoolResults ? (
