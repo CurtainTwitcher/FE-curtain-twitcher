@@ -17,7 +17,6 @@ class PostcodePage extends React.Component {
     };
     this.filterCrimeTypes = this.filterCrimeTypes.bind(this);
     };
-  }
 
   componentDidMount() {
     this.props.fetchPostcodes(this.props.postcode);
