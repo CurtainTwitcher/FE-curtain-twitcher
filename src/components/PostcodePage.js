@@ -1,14 +1,20 @@
 import React from "react";
+
 import CrimeList from "./postcodeComponents/CrimeList";
 import Chart from "./postcodeComponents/chart";
 import TrendGraph from "./postcodeComponents/TrendGraph";
 import MyMapComponent from "./postcodeComponents/googleMap";
 import "./PostcodePage.css";
+import HorizontalSlider from './sliderComponent/slider';
+import 'react-rangeslider/lib/index.css';
 
 class PostcodePage extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchPostcodes(this.props.postcode);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      trendData: []
+    };
+  }
 
   componentDidMount() {
     this.props.fetchPostcodes(this.props.postcode);
@@ -17,6 +23,12 @@ class PostcodePage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.postcode !== nextProps.postcode) {
       this.props.fetchPostcodes(this.props.postcode);
+    }
+    if (
+      this.props.longitude !== nextProps.longitude ||
+      this.props.latitude !== nextProps.latitude
+    ) {
+      // this.fetchTrends(this.props.longitude, this.props.latitude);
     }
   }
 
@@ -27,6 +39,7 @@ class PostcodePage extends React.Component {
           Showing results for recent crimes near:{" "}
           <strong>{this.props.postcode}</strong>
         </h3>
+
         <div className="container">
           <p>
           The crime data on this website has been taken from the Home Office on behalf of the police forces in England and Wales, 
@@ -41,6 +54,20 @@ class PostcodePage extends React.Component {
             latitude={this.props.latitude}
             data={this.props.data}
           />
+        <div className="mapAndSlider container">
+          <div className="map">
+            <MyMapComponent
+              isMarkerShown
+              longitude={this.props.longitude}
+              latitude={this.props.latitude}
+              data={this.props.data}
+            />
+          </div>
+          <div className="slider slider-horizontal">
+            <br/>
+            <h5>Slide to increase/decrease crime radius</h5>
+            <HorizontalSlider value={this.props.value} getRadiusValue={this.props.getRadiusValue} />
+          </div>
         </div>
         <br />
         <div className="container">
@@ -53,7 +80,7 @@ class PostcodePage extends React.Component {
         <br />
         <div className="container" style={{ marginBottom: `200px` }}>
           <p />
-          <TrendGraph data={this.props.data} />
+          <TrendGraph dataSets={this.props.dataSets} />
         </div>
         
       </div>
