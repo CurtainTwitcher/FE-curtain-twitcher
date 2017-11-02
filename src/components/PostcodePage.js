@@ -6,9 +6,13 @@ import MyMapComponent from "./postcodeComponents/googleMap";
 import "./PostcodePage.css";
 
 class PostcodePage extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchPostcodes(this.props.postcode);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      crimeType: ''
+    };
+    this.filterCrimeTypes = this.filterCrimeTypes.bind(this);
+  }
 
   componentDidMount() {
     this.props.fetchPostcodes(this.props.postcode);
@@ -18,6 +22,15 @@ class PostcodePage extends React.Component {
     if (this.props.postcode !== nextProps.postcode) {
       this.props.fetchPostcodes(this.props.postcode);
     }
+  }
+
+  filterCrimeTypes (crimeType) {
+    this.setState({crimeType});
+    console.log('CRIME', crimeType);
+  }
+
+  filterCrimes(arr) {
+    return arr.filter(crime => crime.crimeType.includes(this.state.crimeType))
   }
 
   render() {
@@ -32,12 +45,12 @@ class PostcodePage extends React.Component {
             isMarkerShown
             longitude={this.props.longitude}
             latitude={this.props.latitude}
-            data={this.props.data}
+            data={this.filterCrimes(this.props.data)}
           />
         </div>
         <br />
         <div className="container">
-          <CrimeList data={this.props.data} />
+          <CrimeList crimeType={this.state.crimeType} data={this.props.data} filterCrimeTypes={this.filterCrimeTypes} />
         </div>
         <span style={{ marginLeft: "20%" }}>
           <Chart data={this.props.data} />

@@ -30,6 +30,7 @@ class Homepage extends React.Component {
     this.handleSchools = this.handleSchools.bind(this);
     this.fetchPostcodes = this.fetchPostcodes.bind(this);
     this.fetchSchools = this.fetchSchools.bind(this);
+    
   }
 
   handleFormChange(event) {
@@ -103,6 +104,7 @@ class Homepage extends React.Component {
       .catch(err => {
         console.log(err);
       });
+      
   }
 
   render() {
