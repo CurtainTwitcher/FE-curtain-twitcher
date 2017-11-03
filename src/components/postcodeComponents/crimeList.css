@@ -1,7 +1,7 @@
-.striped{
-  color: lightblue
+.striped {
+  color: rgb(240, 0, 0);
 }
 
 #crimeTable.a {
-  color: red
+  color: red;
 }

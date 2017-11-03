@@ -1,7 +1,7 @@
 import React from "react";
 import SchoolChartList from "./schoolComponents/schoolList";
 import MyMapComponent from "./postcodeComponents/googleMap";
-import "./SchoolPage.css"
+import "./SchoolPage.css";
 
 class SchoolPage extends React.Component {
   componentDidMount() {
@@ -32,40 +32,58 @@ class SchoolPage extends React.Component {
         </div>
         <br />
         <div className="container">
-          <h1>Ofsted score Grades</h1>
+          <h1>Ofsted Score Grades</h1>
           <div className="box">
             <div className="row">
               <div className="col-sm-12">
                 <div className="row">
                   <div className="col-md-3">
                     <div className="well">
-                      <h4 className="text-success"><span>Grade 1 : Outstanding</span></h4>An outstanding school is highly effective in delivering outcomes
-            that provide exceptionally well for all its pupils’ needs. Pupils are well prepared for the next stage of their education, training or employment.
-        </div>
+                      <h4 className="text-success">
+                        <span>Grade 1 : Outstanding</span>
+                      </h4>An outstanding school is highly effective in
+                      delivering outcomes that provide exceptionally well for
+                      all its pupils’ needs. Pupils are well prepared for the
+                      next stage of their education, training or employment.
+                    </div>
                   </div>
                   <div className="col-md-3">
                     <div className="well">
-                      <h4 className="text-success"><span>Grade 2 : Good
-            </span></h4><b />A good school is effective in delivering outcomes that provide well
-            for all its pupils’ needs. Pupils are well prepared for the next stage of their education, training or employment.
-        </div>
+                      <h4 className="text-success">
+                        <span>Grade 2 : Good</span>
+                      </h4>
+                      <b />A good school is effective in delivering outcomes
+                      that provide well for all its pupils’ needs. Pupils are
+                      well prepared for the next stage of their education,
+                      training or employment.
+                    </div>
                   </div>
                   <div className="col-md-3">
                     <div className="well">
-                      <h4 className="text-warning"><span>Grade 3 : Improvement needed</span></h4>A school that requires improvement is not yet a good school, but it
-            is not inadequate. This school will receive a full inspection within 24 months from the date of this inspection.
-        </div>
+                      <h4 className="text-warning">
+                        <span>Grade 3 : Improvement needed</span>
+                      </h4>A school that requires improvement is not yet a good
+                      school, but it is not inadequate. This school will receive
+                      a full inspection within 24 months from the date of this
+                      inspection.
+                    </div>
                   </div>
                   <div className="col-md-3">
                     <div className="well">
-                      <h4 className="text-danger"><span>Grade 4 : Inadequate</span></h4>A school that has serious weaknesses is inadequate overall and
-            requires significant improvement but leadership and management are judged to be Grade 3 or better. This school will receive regular monitoring by Ofsted inspectors.
-        </div>
+                      <h4 className="text-danger">
+                        <span>Grade 4 : Inadequate</span>
+                      </h4>A school that has serious weaknesses is inadequate
+                      overall and requires significant improvement but
+                      leadership and management are judged to be Grade 3 or
+                      better. This school will receive regular monitoring by
+                      Ofsted inspectors.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <br />
           <b>Grade 9 : N/A</b>
           <p>Grading is not required for this area of education. </p>
         </div>
@@ -75,8 +93,7 @@ class SchoolPage extends React.Component {
         </div>
         <br />
         <br />
-        <div className="container" style={{ marginBottom: `200px` }}>
-        </div>
+        <div className="container" style={{ marginBottom: `200px` }} />
       </div>
     );
   }
