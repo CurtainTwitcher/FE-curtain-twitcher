@@ -18,9 +18,10 @@ class CrimeChartList extends React.Component {
 
   afterColumnFilter(filterConds, result) {
     if (filterConds === null) return;
-    if (filterConds.crimeType === undefined) 
-      this.props.filterCrimeTypes('all data');
-     else if (filterConds.crimeType.value !== this.props.crimeType) {
+
+    if (filterConds.crimeType === undefined)
+      this.props.filterCrimeTypes("all data");
+    else if (filterConds.crimeType.value !== this.props.crimeType) {
       this.props.filterCrimeTypes(filterConds.crimeType.value);
     }
   }
@@ -61,5 +62,3 @@ class CrimeChartList extends React.Component {
 }
 
 export default CrimeChartList;
-
-//search={true} multiColumnSearch={true}
