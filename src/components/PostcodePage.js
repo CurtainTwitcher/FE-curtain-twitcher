@@ -51,6 +51,7 @@ class PostcodePage extends React.Component {
             on behalf of the police forces in England and Wales, Northern
             Ireland and the British Transport police. Data is submitted for
             publication on behalf of the data owner, the Chief Constable, of the
+
             respective force for which the data relates.<br />
             <small>
               <strong>Please Note: crime data is two months behind</strong>
@@ -78,6 +79,7 @@ class PostcodePage extends React.Component {
         </div>
         <br />
         <div className="container">
+
           <CrimeList
             crimeType={this.state.crimeType}
             data={this.props.data}

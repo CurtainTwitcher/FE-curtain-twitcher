@@ -18,6 +18,7 @@ class CrimeChartList extends React.Component {
 
   afterColumnFilter(filterConds, result) {
     if (filterConds === null) return;
+
     if (filterConds.crimeType === undefined)
       this.props.filterCrimeTypes("all data");
     else if (filterConds.crimeType.value !== this.props.crimeType) {

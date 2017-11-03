@@ -199,6 +199,7 @@ class Homepage extends React.Component {
             />
           ) : null}
           <br />
+
           {this.state.searchbarHome && !this.state.badRequest ? (
             <IntroText />
           ) : null}

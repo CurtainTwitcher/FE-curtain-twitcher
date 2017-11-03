@@ -3,6 +3,7 @@ import SchoolChartList from "./schoolComponents/schoolList";
 import MyMapComponent from "./postcodeComponents/googleMap";
 import "./SchoolPage.css";
 
+
 class SchoolPage extends React.Component {
   componentDidMount() {
     // this.props.fetchPostcodes(this.props.postcode);
