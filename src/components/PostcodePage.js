@@ -50,8 +50,10 @@ class PostcodePage extends React.Component {
             on behalf of the police forces in England and Wales, Northern
             Ireland and the British Transport police. Data is submitted for
             publication on behalf of the data owner, the Chief Constable, of the
-            respective force for which the data relates. Note crime data is two
-            months behind
+            respective force for which the data relates.<br />
+            <small>
+              <strong>Please Note: crime data is two months behind</strong>
+            </small>
           </p>
         </div>
 
