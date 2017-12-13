@@ -174,7 +174,7 @@ class Homepage extends React.Component {
         `https://curtain-twitcher.herokuapp.com/api/crimes/trends?lng=${lng}&lat=${lat}`
       )
       .then(res => {
-        let trend = res.data
+        res.data
           .map(crime => {
             return dataTrend.push({
               [crime.name]: Object.values(crime).slice(1)
