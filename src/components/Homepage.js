@@ -73,9 +73,9 @@ class Homepage extends React.Component {
       .then(res => {
         axios
           .get(
-            `https://curtain-twitcher.herokuapp.com/api/crimes?lng=${this.state
-              .longitude}&lat=${this.state.latitude}&dis=${this.state
-              .searchRadius}`
+            `https://curtain-twitcher.herokuapp.com/api/crimes?lng=${
+              this.state.longitude
+            }&lat=${this.state.latitude}&dis=${this.state.searchRadius}`
           )
           .then(res => {
             this.setState({
@@ -90,8 +90,9 @@ class Homepage extends React.Component {
 
         axios
           .get(
-            `https://curtain-twitcher.herokuapp.com/api/crimes/trends?lng=${this
-              .state.longitude}&lat=${this.state.latitude}`
+            `https://curtain-twitcher.herokuapp.com/api/crimes/trends?lng=${
+              this.state.longitude
+            }&lat=${this.state.latitude}`
           )
           .then(response => {
             this.setState({
@@ -159,7 +160,6 @@ class Homepage extends React.Component {
       .catch(err => {
         console.log(err);
       });
-      
   }
 
   getRadiusValue(searchRadius) {
@@ -178,9 +178,6 @@ class Homepage extends React.Component {
           .map(crime => {
             return dataTrend.push({
               [crime.name]: Object.values(crime).slice(1)
-            });
-            this.setState({
-              data: trend
             });
           })
           .then(res => {

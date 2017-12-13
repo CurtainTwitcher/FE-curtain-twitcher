@@ -11,11 +11,11 @@ class PostcodePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      crimeType: '',
+      crimeType: "",
       trendData: []
     };
     this.filterCrimeTypes = this.filterCrimeTypes.bind(this);
-    };
+  }
 
   componentDidMount() {
     this.props.fetchPostcodes(this.props.postcode);
@@ -27,14 +27,14 @@ class PostcodePage extends React.Component {
     }
   }
 
-  filterCrimeTypes (crimeType) {
-    this.setState({crimeType});
-    console.log('CRIME', crimeType);
+  filterCrimeTypes(crimeType) {
+    this.setState({ crimeType });
   }
 
   filterCrimes(arr) {
-    return this.state.crimeType === 'all data' ? arr
-    : arr.filter(crime => crime.crimeType.includes(this.state.crimeType));
+    return this.state.crimeType === "all data"
+      ? arr
+      : arr.filter(crime => crime.crimeType.includes(this.state.crimeType));
   }
 
   render() {
@@ -45,7 +45,7 @@ class PostcodePage extends React.Component {
           <strong>{this.props.postcode}</strong>
         </h3>
         <div className="container">
-          <p style={{textAlign: "centre"}}>
+          <p style={{ textAlign: "centre" }}>
             The crime data on this website has been taken from the Home Office
             on behalf of the police forces in England and Wales, Northern
             Ireland and the British Transport police. Data is submitted for
@@ -75,7 +75,11 @@ class PostcodePage extends React.Component {
         </div>
         <br />
         <div className="container">
-          <CrimeList crimeType={this.state.crimeType} data={this.props.data} filterCrimeTypes={this.filterCrimeTypes} />
+          <CrimeList
+            crimeType={this.state.crimeType}
+            data={this.props.data}
+            filterCrimeTypes={this.filterCrimeTypes}
+          />
         </div>
         <br />
         <br />
